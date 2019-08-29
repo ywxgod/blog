@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
-  <updated>2019-08-29T01:22:41.034Z</updated>
+  <updated>2019-08-29T01:28:12.397Z</updated>
   <id>https://ywxgod.github.io/blog/</id>
   
   <author>
@@ -21,21 +21,38 @@
     <link href="https://ywxgod.github.io/blog/2019/08/21/css/style_categories/"/>
     <id>https://ywxgod.github.io/blog/2019/08/21/css/style_categories/</id>
     <published>2019-08-21T15:44:36.664Z</published>
-    <updated>2019-08-29T01:22:41.034Z</updated>
+    <updated>2019-08-29T01:28:12.397Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="结构参考"><a href="#结构参考" class="headerlink" title="结构参考"></a>结构参考</h3><ul><li>一般性样式<ol><li>主体样式</li><li>reset样式</li><li>链接</li><li>标题</li><li>其他元素</li></ol></li><li>辅助样式<ol><li>表单</li><li>通知和错误</li><li>一致的条目</li></ol></li><li>页面结构<ol><li>头部、页脚和导航</li><li>布局</li><li>其他页面结构元素</li></ol></li><li>页面组件<ol><li>各个页面模块</li></ol></li><li><p>覆盖<br>使用统一的大块注释分割每个部分如：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* @group general styles</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group helper styles</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group page structure</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group page modules</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group overrides</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="特殊性"><a href="#特殊性" class="headerlink" title="特殊性"></a>特殊性</h3><p>特殊性分4个等级：a,b,c,d.</p><ul><li>如果样式是行内样式，a=1.</li><li>b等于ID选择器的总数</li><li>c等于类，伪类和属性选择器的数量</li><li>d等于元素和伪元素的数量</li></ul><table><thead><tr><th style="text-align:left">选择器</th><th style="text-align:center">特殊性</th><th style="text-align:right">特殊值</th></tr></thead><tbody><tr><td style="text-align:left">Style=””</td><td style="text-align:center">1,0,0,0</td><td style="text-align:right">1000</td></tr><tr><td style="text-align:left">#wrapper #content {}</td><td style="text-align:center">0,2,0,0</td><td style="text-align:right">200</td></tr><tr><td style="text-align:left">#wrapper .date {}</td><td style="text-align:center">0,1,1,0</td><td style="text-align:right">110</td></tr><tr><td style="text-align:left">div#content {}</td><td style="text-align:center">0,1,0,1</td><td style="text-align:right">101</td></tr><tr><td style="text-align:left">#content {}</td><td style="text-align:center">0,1,0,0</td><td style="text-align:right">100</td></tr><tr><td style="text-align:left">p.content .date {}</td><td style="text-align:center">0,0,2,1</td><td style="text-align:right">21</td></tr><tr><td style="text-align:left">p.content {}</td><td style="text-align:center">0,0,1,1</td><td style="text-align:right">11</td></tr><tr><td style="text-align:left">p div {}</td><td style="text-align:center">0,0,0,2</td><td style="text-align:right">2</td></tr><tr><td style="text-align:left">p {}</td><td style="text-align:center">0,0,0,1</td><td style="text-align:right">1</td></tr></tbody></table>]]></content>
+    <content type="html"><![CDATA[<h3 id="结构参考"><a href="#结构参考" class="headerlink" title="结构参考"></a>结构参考</h3><ul><li>一般性样式<ol><li>主体样式</li><li>reset样式</li><li>链接</li><li>标题</li><li>其他元素</li></ol></li><li>辅助样式<ol><li>表单</li><li>通知和错误</li><li>一致的条目</li></ol></li><li>页面结构<ol><li>头部、页脚和导航</li><li>布局</li><li>其他页面结构元素</li></ol></li><li>页面组件<ol><li>各个页面模块</li></ol></li><li>覆盖<br>使用统一的大块注释分割每个部分如：<a id="more"></a><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* @group general styles</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group helper styles</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group page structure</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group page modules</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* @group overrides</span></span><br><span class="line"><span class="comment">-------------------------------------------------------------------------------- */</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="特殊性"><a href="#特殊性" class="headerlink" title="特殊性"></a>特殊性</h3><p>特殊性分4个等级：a,b,c,d.</p><ul><li>如果样式是行内样式，a=1.</li><li>b等于ID选择器的总数</li><li>c等于类，伪类和属性选择器的数量</li><li>d等于元素和伪元素的数量</li></ul><table><thead><tr><th style="text-align:left">选择器</th><th style="text-align:center">特殊性</th><th style="text-align:right">特殊值</th></tr></thead><tbody><tr><td style="text-align:left">Style=””</td><td style="text-align:center">1,0,0,0</td><td style="text-align:right">1000</td></tr><tr><td style="text-align:left">#wrapper #content {}</td><td style="text-align:center">0,2,0,0</td><td style="text-align:right">200</td></tr><tr><td style="text-align:left">#wrapper .date {}</td><td style="text-align:center">0,1,1,0</td><td style="text-align:right">110</td></tr><tr><td style="text-align:left">div#content {}</td><td style="text-align:center">0,1,0,1</td><td style="text-align:right">101</td></tr><tr><td style="text-align:left">#content {}</td><td style="text-align:center">0,1,0,0</td><td style="text-align:right">100</td></tr><tr><td style="text-align:left">p.content .date {}</td><td style="text-align:center">0,0,2,1</td><td style="text-align:right">21</td></tr><tr><td style="text-align:left">p.content {}</td><td style="text-align:center">0,0,1,1</td><td style="text-align:right">11</td></tr><tr><td style="text-align:left">p div {}</td><td style="text-align:center">0,0,0,2</td><td style="text-align:right">2</td></tr><tr><td style="text-align:left">p {}</td><td style="text-align:center">0,0,0,1</td><td style="text-align:right">1</td></tr></tbody></table>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h3 id=&quot;结构参考&quot;&gt;&lt;a href=&quot;#结构参考&quot; class=&quot;headerlink&quot; title=&quot;结构参考&quot;&gt;&lt;/a&gt;结构参考&lt;/h3&gt;&lt;ul&gt;
+      &lt;h3 id=&quot;结构参考&quot;&gt;&lt;a href=&quot;#结构参考&quot; class=&quot;headerlink&quot; title=&quot;结构参考&quot;&gt;&lt;/a&gt;结构参考&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;一般性样式&lt;ol&gt;
 &lt;li&gt;主体样式&lt;/li&gt;
 &lt;li&gt;reset样式&lt;/li&gt;
 &lt;li&gt;链接&lt;/li&gt;
-&lt;li
-      
+&lt;li&gt;标题&lt;/li&gt;
+&lt;li&gt;其他元素&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;辅助样式&lt;ol&gt;
+&lt;li&gt;表单&lt;/li&gt;
+&lt;li&gt;通知和错误&lt;/li&gt;
+&lt;li&gt;一致的条目&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;页面结构&lt;ol&gt;
+&lt;li&gt;头部、页脚和导航&lt;/li&gt;
+&lt;li&gt;布局&lt;/li&gt;
+&lt;li&gt;其他页面结构元素&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;页面组件&lt;ol&gt;
+&lt;li&gt;各个页面模块&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;覆盖&lt;br&gt;使用统一的大块注释分割每个部分如：
     
     </summary>
     
