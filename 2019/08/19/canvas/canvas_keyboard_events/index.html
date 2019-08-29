@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Canvas的键盘事件 | Anything is possible</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="baidu-site-verification" content="oLJXAOYkTP">
+  <meta name="description" content="canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。 1234567891011document.addEventListener(&apos;keydown&apos;, function(e)&amp;#123;    console.log(&apos;keydown&apos;,e);&amp;#125;);document.addEventListener(&apos;">
+<meta name="keywords" content="canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas的键盘事件">
+<meta property="og:url" content="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_keyboard_events/index.html">
+<meta property="og:site_name" content="Anything is possible">
+<meta property="og:description" content="canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。 1234567891011document.addEventListener(&apos;keydown&apos;, function(e)&amp;#123;    console.log(&apos;keydown&apos;,e);&amp;#125;);document.addEventListener(&apos;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-19T15:44:23.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Canvas的键盘事件">
+<meta name="twitter:description" content="canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。 1234567891011document.addEventListener(&apos;keydown&apos;, function(e)&amp;#123;    console.log(&apos;keydown&apos;,e);&amp;#125;);document.addEventListener(&apos;">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Anything is possible" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/highlight/styles/darkula.css">
+  <script src="/blog/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Anything is possible</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">明月清风随意取，青山绿水任遨游</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">首页</a>
+        
+          <a class="main-nav-link" href="/blog/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <div>
+        <script>
+        (function() {
+          /*var cx = '014509043148742714522:kpw0mr56_rs';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);*/
+        })();
+      </script>
+      <!--<gcse:search></gcse:search>-->
+      </div>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ywxgod.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+<article id="post-canvas/canvas_keyboard_events" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/08/19/canvas/canvas_keyboard_events/" class="article-date">
+  <time datetime="2019-08-19T15:44:23.725Z" itemprop="datePublished">2019-08-19</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Canvas的键盘事件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keydown'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keydown'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keyup'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keypress'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keypress'</span>,e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>如果按下的时可见字符，keypress事件会在keydown与keyup事件之间触发，否则不会触发。<br>如果按下某个可见字符持续一段时间，浏览器(谷歌)会循环触发keydown，keypress事件，直到松开按键触发一次keyup事件。</p>
+<p><strong>要想知道按下的是哪个键，一般可以从传给事件处理函数的事件对象中获取。</strong></p>
+<p>对于keydown，keyup事件，其事件对象的keyCode属性一般会保存按下的可见字符的ASCII码，如果是不可见字符，可以读取altKey，ctrlKey，metaKey，shiftKey这些属性来判断。<br>对于keypress事件，一定可以用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.fromCharCode(event.which)</span><br></pre></td></tr></table></figure>
+<p>获取当前按下的字符。</p>
+
+      
+    </div>
+    
+      <div class="copyright">
+      <div class="article-entry copyright-div">
+        本博客所有文章均为原创，如需转载请注明出处：<br>
+        作者：wyin<br>
+        邮箱：ywx1818@163.com<br>
+        来源：http://ywxgod.github.io/blog<br>
+      </div>
+      </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_keyboard_events/" data-id="cjzil96yz000z2curafonk3c6" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_keyboard_events/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+<section id="comments">
+    <div id="gitmentContainer"></div>
+    <link rel="stylesheet" href="/blog/css/custom/default.css">
+    <script src="/blog/js/gitment.browser.js"></script>
+    <script>
+      var gitment = new Gitment({
+          id: 'Mon Aug 19 2019 23:44:23 GMT+0800',
+          owner: 'ywxgod', 
+          repo: 'blog',
+          oauth: {
+              client_id: 'cb5071a3a89f450b30c2',
+              client_secret: '69efceee331ec865ef7cce997565a69e5bb0993c',
+          },
+      });
+      gitment.render('gitmentContainer')
+    </script>
+</section>
+
+
+
+
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2019/08/19/canvas/canvas_size_intro/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Canvas大小的设定
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          
+          <li>
+            <a href="/blog/2019/08/21/css/style_categories/">样式代码结构参考</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/08/19/use_verdaccio/">用verdaccio搭建个人用npm私服</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/08/19/use_promise/">Promise与请求超时</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/08/19/sublime_text_3_can't_install_packages/">Sublime Text无法安装packages的问题</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/08/19/remove_array_duplicates_in_es6/">ES6数组去重的三种方法</a>
+          </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">八月 2019</a><span class="archive-list-count">10</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 wyin
+      <br>
+      <div id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</div>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">首页</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="/blog/js/jquery-2.2.4.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
