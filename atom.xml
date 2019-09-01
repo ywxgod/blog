@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>wyin&#39;s</title>
+  <title>Web Snippets</title>
   
-  <subtitle>Web Snippets</subtitle>
+  <subtitle>Code，Food，English，History</subtitle>
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
