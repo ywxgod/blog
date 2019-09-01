@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Anything is possible</title>
+  <title></title>
   
-  <subtitle>明月清风随意取，青山绿水任遨游</subtitle>
+  <subtitle>web snippets</subtitle>
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
