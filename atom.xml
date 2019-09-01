@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Web Snippets</title>
   
-  <subtitle>Code，Food，English，History</subtitle>
+  <subtitle>code，food，english，history</subtitle>
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
