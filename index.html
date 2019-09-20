@@ -89,6 +89,69 @@
         <section id="main">
   
     
+<article id="post-http-server" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/09/21/http-server/" class="article-date">
+  <time datetime="2019-09-20T16:22:28.803Z" itemprop="datePublished">2019-09-21</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/09/21/http-server/">有关http-server的两个问题的解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>无法访问首页，或者提示ERR_INVALID_REDIRECT</li>
+</ol>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server -g -p <span class="number">4205</span></span><br></pre></td></tr></table></figure>
+<p>   运行上面的命令，然后在浏览器访问：<a href="http://localhost:4205" target="_blank" rel="noopener">http://localhost:4205</a> 你会发现无法打开首页，提示ERR_INVALID_REDIRECT<br>   如果访问：<a href="http://localhost:4205/index.html" target="_blank" rel="noopener">http://localhost:4205/index.html</a> 确能正常访问，不过如果带上history路由访问单页应用还是不行。</p>
+<p>   目前发现0.11版本有这个问题，只要将其降级到0.9.0版本即可解决，参考以下链接：<br>   <a href="https://github.com/http-party/http-server/issues/525" target="_blank" rel="noopener">https://github.com/http-party/http-server/issues/525</a> 0.9.0以上其他版本是否有同样的问题未知。</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall http-server -g</span><br><span class="line">npm install http-server@<span class="number">0.9</span> -g</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>单页应用时http-server不支持history模式的路由</li>
+</ol>
+<p>   先安装spa-http-server，然后在http-server启动参数增加–push-state即可。</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install spa-http-server</span><br><span class="line">http-server -g -p <span class="number">4205</span> --push-state</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/09/21/http-server/" data-id="ck0sc6tv10000icuruzg6lqd1" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/09/21/http-server/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/http-server/">http-server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
 <article id="post-css/css_foundation" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
@@ -652,70 +715,6 @@
 
 
   
-    
-<article id="post-canvas/canvas_size_intro" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/08/19/canvas/canvas_size_intro/" class="article-date">
-  <time datetime="2019-08-19T15:44:23.726Z" itemprop="datePublished">2019-08-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/19/canvas/canvas_size_intro/">Canvas大小的设定</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通常设置canvas大小有两种方法:</p>
-<ol>
-<li>通过css设置width与height</li>
-<li>通过canvas标签的属性width与height设置</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.canvas</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"150"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>两种方法的区别：<br>
-        
-          </p><p class="article-more-link">
-            <a href="/blog/2019/08/19/canvas/canvas_size_intro/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_size_intro/" data-id="cjzil96z100102cur9db4d4yz" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_size_intro/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -732,6 +731,12 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          
+          <li>
+            <a href="/blog/2019/09/21/http-server/">有关http-server的两个问题的解决方法</a>
+          </li>
+          
         
           
           <li>
@@ -757,12 +762,6 @@
           </li>
           
         
-          
-          <li>
-            <a href="/blog/2019/08/19/sublime_text_3_can't_install_packages/">Sublime Text无法安装packages的问题</a>
-          </li>
-          
-        
       </ul>
     </div>
   </div>
@@ -772,7 +771,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -782,7 +781,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -792,7 +791,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
     </div>
   </div>
 
@@ -801,7 +800,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">八月 2019</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">八月 2019</a><span class="archive-list-count">10</span></li></ul>
     </div>
   </div>
 

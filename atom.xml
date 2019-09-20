@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
-  <updated>2019-09-01T09:59:15.983Z</updated>
+  <updated>2019-09-20T16:26:00.105Z</updated>
   <id>https://ywxgod.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>有关http-server的两个问题的解决方法</title>
+    <link href="https://ywxgod.github.io/blog/2019/09/21/http-server/"/>
+    <id>https://ywxgod.github.io/blog/2019/09/21/http-server/</id>
+    <published>2019-09-20T16:22:28.803Z</published>
+    <updated>2019-09-20T16:26:00.105Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>无法访问首页，或者提示ERR_INVALID_REDIRECT</li></ol>   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server -g -p <span class="number">4205</span></span><br></pre></td></tr></table></figure><p>   运行上面的命令，然后在浏览器访问：<a href="http://localhost:4205" target="_blank" rel="noopener">http://localhost:4205</a> 你会发现无法打开首页，提示ERR_INVALID_REDIRECT<br>   如果访问：<a href="http://localhost:4205/index.html" target="_blank" rel="noopener">http://localhost:4205/index.html</a> 确能正常访问，不过如果带上history路由访问单页应用还是不行。</p><p>   目前发现0.11版本有这个问题，只要将其降级到0.9.0版本即可解决，参考以下链接：<br>   <a href="https://github.com/http-party/http-server/issues/525" target="_blank" rel="noopener">https://github.com/http-party/http-server/issues/525</a> 0.9.0以上其他版本是否有同样的问题未知。</p>   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall http-server -g</span><br><span class="line">npm install http-server@<span class="number">0.9</span> -g</span><br></pre></td></tr></table></figure><ol start="2"><li>单页应用时http-server不支持history模式的路由</li></ol><p>   先安装spa-http-server，然后在http-server启动参数增加–push-state即可。</p>   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install spa-http-server</span><br><span class="line">http-server -g -p <span class="number">4205</span> --push-state</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;无法访问首页，或者提示ERR_INVALID_REDIRECT&lt;/li&gt;
+&lt;/ol&gt;
+   &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+      <category term="code" scheme="https://ywxgod.github.io/blog/categories/code/"/>
+    
+    
+      <category term="http-server" scheme="https://ywxgod.github.io/blog/tags/http-server/"/>
+    
+  </entry>
   
   <entry>
     <title>css基础知识</title>
