@@ -14,7 +14,7 @@
 .gitment-comments-error {
   display: none;
 }
-.copyright {
+.copyright-container {
   margin: 20px;
   border-radius: 4px 4px;
   border: 1px solid #ccc;
@@ -23,7 +23,5 @@
   color: #b9a7a7;
   font-weight: bold;
   font-size: 0.5rem;
-}
-.article-entry {
   padding: 10px;
 }
