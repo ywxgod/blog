@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Web Snippets">
 <meta property="og:description" content="官方按需加载的实现要实现自定义主题的按需加载通常要做以下三件事：  按需导入element-ui的组件，如：  123456789101112131415import Vue from &apos;vue&apos;;import &amp;#123;    Button, Select, Tooltip&amp;#125; from &apos;element-ui&apos;;let uis = [    Button, Select, Toolt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-22T11:05:39.454Z">
+<meta property="og:updated_time" content="2019-09-22T11:07:10.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="element-ui自定义主题无法按需加载的解决思考">
 <meta name="twitter:description" content="官方按需加载的实现要实现自定义主题的按需加载通常要做以下三件事：  按需导入element-ui的组件，如：  123456789101112131415import Vue from &apos;vue&apos;;import &amp;#123;    Button, Select, Tooltip&amp;#125; from &apos;element-ui&apos;;let uis = [    Button, Select, Toolt">
@@ -126,7 +126,7 @@
 <li>安装babel-plugin-component插件，并配置到.babelrc中</li>
 </ol>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">"component"</span>,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">"libraryName"</span>: <span class="string">"element-ui"</span>,</span><br><span class="line">        <span class="attr">"styleLibraryName"</span>: <span class="string">"theme-chalk"</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol start="3">
 <li>修改element-ui主题样式，重新引入</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 改变主题色变量 */</span></span><br><span class="line">$--color-primary: #333;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 改变 icon 字体路径变量，必需 */</span></span><br><span class="line">$--font-path: <span class="string">'~element-ui/lib/theme-chalk/fonts'</span>;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"~element-ui/packages/theme-chalk/src/index"</span>;</span><br></pre></td></tr></table></figure>
