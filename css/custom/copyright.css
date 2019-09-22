@@ -1,0 +1,29 @@
+/*
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.copyright>#article-nav{
+	flex: 1;
+	font-size: 1.2rem;
+	margin: 0;
+}
+*/
+.gitment-comments-error {
+  display: none;
+}
+.copyright {
+  margin: 20px;
+  border-radius: 4px 4px;
+  border: 1px solid #ccc;
+}
+.copyright-div {
+  color: #b9a7a7;
+  font-weight: bold;
+  font-size: 0.5rem;
+}
+.article-entry {
+  padding: 10px;
+}
