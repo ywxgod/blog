@@ -5,21 +5,20 @@
   
 
   
-  <title>ES6数组去重的三种方法 | Web Snippets</title>
+  <title>Category: code | Web Snippets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="oLJXAOYkTP">
-  <meta name="description" content="ES6数组去重我们可以用以下三种方法： 1. 使用Set12let array = [1,2,3,4,6,2,3,8,9,1,5,6,7,8,9];console.log([...new Set(array)]); //[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ] 2. 使用filter函数123let array = [1,2,3,4,6,2,3,8,9,1,5,6,7,8,9];">
-<meta name="keywords" content="ES6,Array">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ES6数组去重的三种方法">
-<meta property="og:url" content="https://ywxgod.github.io/blog/2019/08/19/remove_array_duplicates_in_es6/index.html">
+  <meta name="description" content="Code，Food，English，History">
+<meta name="keywords" content="Code，Food，English，History">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Web Snippets">
+<meta property="og:url" content="https://ywxgod.github.io/blog/categories/code/page/2/index.html">
 <meta property="og:site_name" content="Web Snippets">
-<meta property="og:description" content="ES6数组去重我们可以用以下三种方法： 1. 使用Set12let array = [1,2,3,4,6,2,3,8,9,1,5,6,7,8,9];console.log([...new Set(array)]); //[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ] 2. 使用filter函数123let array = [1,2,3,4,6,2,3,8,9,1,5,6,7,8,9];">
+<meta property="og:description" content="Code，Food，English，History">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-19T15:44:23.733Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6数组去重的三种方法">
-<meta name="twitter:description" content="ES6数组去重我们可以用以下三种方法： 1. 使用Set12let array = [1,2,3,4,6,2,3,8,9,1,5,6,7,8,9];console.log([...new Set(array)]); //[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ] 2. 使用filter函数123let array = [1,2,3,4,6,2,3,8,9,1,5,6,7,8,9];">
+<meta name="twitter:title" content="Web Snippets">
+<meta name="twitter:description" content="Code，Food，English，History">
   
     <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
   
@@ -88,106 +87,46 @@
 </header>
       <div class="outer">
         <section id="main">
-<article id="post-remove_array_duplicates_in_es6" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
+  
+  
     
-<a href="/blog/2019/08/19/remove_array_duplicates_in_es6/" class="article-date">
-  <time datetime="2019-08-19T15:44:23.730Z" itemprop="datePublished">2019-08-19</time>
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/blog/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+<a href="/blog/2019/08/19/http_cors/" class="archive-article-date">
+  <time datetime="2019-08-19T15:44:23.728Z" itemprop="datePublished">8月 19</time>
 </a>
 
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/code/">code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      
   
-    <h1 class="article-title" itemprop="name">
-      ES6数组去重的三种方法
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/blog/2019/08/19/http_cors/">HTTP访问控制CORS</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ES6数组去重我们可以用以下三种方法：</p>
-<h4 id="1-使用Set"><a href="#1-使用Set" class="headerlink" title="1. 使用Set"></a>1. 使用Set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(array)]); <span class="comment">//[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-使用filter函数"><a href="#2-使用filter函数" class="headerlink" title="2. 使用filter函数"></a>2. 使用filter函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.filter(<span class="function">(<span class="params">item,index</span>)=&gt;</span>array.findIndex(<span class="function"><span class="params">i</span>=&gt;</span>i==item)==index);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-使用reduce函数"><a href="#3-使用reduce函数" class="headerlink" title="3. 使用reduce函数"></a>3. 使用reduce函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.reduce(<span class="function">(<span class="params">res,item</span>)=&gt;</span>res.includes(item)?res:[...res,item],[]);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-      <div class="copyright copyright-container">
-      <div class="article-entry copyright-div">
-        本博客所有文章均为原创，如需转载请注明出处：<br>
-        作者：wyin<br>
-        邮箱：ywx1818@163.com<br>
-        来源：http://ywxgod.github.io/blog<br>
-      </div>
-      </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/08/19/remove_array_duplicates_in_es6/" data-id="ck0uvs9u50005ikur14ojwiy8" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/08/19/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
 </article>
+  
+  
+    </div></section>
+  
 
 
-<section id="comments">
-    <div id="gitmentContainer"></div>
-    <link rel="stylesheet" href="/blog/css/custom/default.css">
-    <script src="/blog/js/gitment.browser.js"></script>
-    <script>
-      var gitment = new Gitment({
-          id: 'Mon Aug 19 2019 23:44:23 GMT+0800',
-          owner: 'ywxgod', 
-          repo: 'blog',
-          oauth: {
-              client_id: 'cb5071a3a89f450b30c2',
-              client_secret: '69efceee331ec865ef7cce997565a69e5bb0993c',
-          },
-      });
-      gitment.render('gitmentContainer')
-    </script>
-</section>
-
-
-
-
+  <nav id="page-nav">
     
-<nav id="article-nav">
-  
-    <a href="/blog/2019/08/19/sublime_text_3_can't_install_packages/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Sublime Text无法安装packages的问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/blog/2019/08/19/issues_for_webpack/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">用webpack打包的常见问题</div>
-    </a>
-  
-</nav>
-
-  
+    <a class="extend prev" rel="prev" href="/blog/categories/code/">&laquo; 上一页</a><a class="page-number" href="/blog/categories/code/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         

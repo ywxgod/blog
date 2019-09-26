@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
-  <updated>2019-09-22T11:10:42.277Z</updated>
+  <updated>2019-09-26T18:10:04.658Z</updated>
   <id>https://ywxgod.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mongoose链接数据库时的两个警告处理</title>
+    <link href="https://ywxgod.github.io/blog/2019/09/27/mongoose/mongoose_issues/"/>
+    <id>https://ywxgod.github.io/blog/2019/09/27/mongoose/mongoose_issues/</id>
+    <published>2019-09-26T18:08:18.620Z</published>
+    <updated>2019-09-26T18:10:04.658Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过正常情况启动mongoose（mongoose版本为5.7.1，node.js版本为12.10.0）</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> uri = <span class="string">'mongodb://localhost:27017/blog_db'</span>;</span><br><span class="line"><span class="keyword">const</span> options = &#123;<span class="attr">useNewUrlParser</span>: <span class="literal">true</span>&#125;;</span><br><span class="line"><span class="keyword">async</span> connect()&#123;</span><br><span class="line">    <span class="keyword">let</span> connection = mongoose.createConnection();</span><br><span class="line"><span class="keyword">this</span>.addEvents(connection);</span><br><span class="line"><span class="keyword">return</span> connection.openUri(uri, options);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> connection = <span class="keyword">await</span> connect();</span><br></pre></td></tr></table></figure><p>启动后控制台会出现以下警告：<a id="more"></a></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(node:6248) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option &#123; useUnifiedTopology: true &#125; to the MongoClient constructor.</span><br><span class="line">Mongoose connected to mongodb://localhost:27017/blog_db</span><br><span class="line">(node:6248) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.</span><br></pre></td></tr></table></figure><p>根据提示，添加 useUnifiedTopology: true到连接选项，即可消除第一个警告</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">useNewUrlParser</span>: <span class="literal">true</span>,  <span class="attr">useUnifiedTopology</span>: <span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure><p>添加 useCreateIndex: true 消除第二个警告：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;<span class="attr">useNewUrlParser</span>: <span class="literal">true</span>,  <span class="attr">useUnifiedTopology</span>: <span class="literal">true</span>, <span class="attr">useCreateIndex</span>: <span class="literal">true</span>&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通过正常情况启动mongoose（mongoose版本为5.7.1，node.js版本为12.10.0）&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; uri = &lt;span class=&quot;string&quot;&gt;&#39;mongodb://localhost:27017/blog_db&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; options = &amp;#123;&lt;span class=&quot;attr&quot;&gt;useNewUrlParser&lt;/span&gt;: &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; connect()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; connection = mongoose.createConnection();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.addEvents(connection);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; connection.openUri(uri, options);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; connection = &lt;span class=&quot;keyword&quot;&gt;await&lt;/span&gt; connect();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;启动后控制台会出现以下警告：
+    
+    </summary>
+    
+      <category term="code" scheme="https://ywxgod.github.io/blog/categories/code/"/>
+    
+    
+      <category term="mongoose" scheme="https://ywxgod.github.io/blog/tags/mongoose/"/>
+    
+  </entry>
   
   <entry>
     <title>element-ui自定义主题无法按需加载的解决思考</title>
