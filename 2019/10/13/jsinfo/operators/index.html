@@ -8,18 +8,18 @@
   <title>001 - JS操作符注意点 | Web Snippets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="oLJXAOYkTP">
-  <meta name="description" content="记录自己比较容易忘记的概念和内容，方便以后查阅。原文请参考：http://javascript.info/operators 笔记内容二元运算符(+/-*)对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：The rule is simple: if either operand is a string, the other one is converted into a">
+  <meta name="description" content="记录自己比较容易忘记的概念和内容，方便以后查阅。原文请参考：http://javascript.info/operators 二元运算符(+/-*)对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：The rule is simple: if either operand is a string, the other one is converted into a stri">
 <meta name="keywords" content="JS操作符">
 <meta property="og:type" content="article">
 <meta property="og:title" content="001 - JS操作符注意点">
 <meta property="og:url" content="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/index.html">
 <meta property="og:site_name" content="Web Snippets">
-<meta property="og:description" content="记录自己比较容易忘记的概念和内容，方便以后查阅。原文请参考：http://javascript.info/operators 笔记内容二元运算符(+/-*)对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：The rule is simple: if either operand is a string, the other one is converted into a">
+<meta property="og:description" content="记录自己比较容易忘记的概念和内容，方便以后查阅。原文请参考：http://javascript.info/operators 二元运算符(+/-*)对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：The rule is simple: if either operand is a string, the other one is converted into a stri">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-13T04:29:53.017Z">
+<meta property="og:updated_time" content="2019-10-13T04:34:45.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="001 - JS操作符注意点">
-<meta name="twitter:description" content="记录自己比较容易忘记的概念和内容，方便以后查阅。原文请参考：http://javascript.info/operators 笔记内容二元运算符(+/-*)对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：The rule is simple: if either operand is a string, the other one is converted into a">
+<meta name="twitter:description" content="记录自己比较容易忘记的概念和内容，方便以后查阅。原文请参考：http://javascript.info/operators 二元运算符(+/-*)对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：The rule is simple: if either operand is a string, the other one is converted into a stri">
   
     <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
   
@@ -117,7 +117,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>记录自己比较容易忘记的概念和内容，方便以后查阅。原文请参考：<a href="http://javascript.info/operators" target="_blank" rel="noopener">http://javascript.info/operators</a></p>
-<h2 id="笔记内容"><a href="#笔记内容" class="headerlink" title="笔记内容"></a>笔记内容</h2><h3 id="二元运算符"><a href="#二元运算符" class="headerlink" title="二元运算符(+/-*)"></a>二元运算符(+/-*)</h3><p>对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：<br>The rule is simple: if either operand is a string, the other one is converted into a string as well </p>
+<h3 id="二元运算符"><a href="#二元运算符" class="headerlink" title="二元运算符(+/-*)"></a>二元运算符(+/-*)</h3><p>对于 + 运算符，只要有一个操作数是字符串，将会另外一个也转为字符串，如：<br>The rule is simple: if either operand is a string, the other one is converted into a string as well </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">'my'</span>+<span class="string">'string'</span>;</span><br><span class="line">alert(s); <span class="comment">// mystring</span></span><br><span class="line">alert(<span class="string">'1'</span>+<span class="number">2</span>); <span class="comment">//'12'</span></span><br><span class="line">alert(<span class="number">2</span>+<span class="string">'1'</span>); <span class="comment">//'21'</span></span><br><span class="line">alert(<span class="number">2</span>+<span class="number">2</span>+<span class="string">'1'</span>); <span class="comment">//'41' and not '221'</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>其他运算符(/-*)只会对数字进行运算，所以它们会先将非数字的操作数转为数字，然后再运算，如：</p>
