@@ -89,11 +89,11 @@
         <section id="main">
   
     
-<article id="post-http_cors" class="article article-type-post" itemscope="" itemprop="blogPost">
+<article id="post-issues_for_webpack" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/blog/2019/08/19/http_cors/" class="article-date">
-  <time datetime="2019-08-19T15:44:23.728Z" itemprop="datePublished">2019-08-19</time>
+<a href="/blog/2019/10/11/issues_for_webpack/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
 </a>
 
     
@@ -109,7 +109,128 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/19/http_cors/">HTTP访问控制CORS</a>
+      <a class="article-title" href="/blog/2019/10/11/issues_for_webpack/">用webpack打包的常见问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>webpack配置项太多，要完全完美的写一个webpack配置需要了解太多的东西了，下面记录的是自己学习过程中感到比较重要的地方和处理方法，当然处理方法不止一种，这里只是其中的一种而已。<br>本文参考于：<a href="https://survivejs.com/webpack/foreword/" target="_blank" rel="noopener">https://survivejs.com/webpack/foreword/</a>，那里有详细的英文文档。</p>
+<p><strong><a href="#如何传不同的环境变量产生不同的输出">1. 如何传不同的环境变量产生不同的输出</a></strong><br><strong><a href="#开发环境有更新时如何自动打包">2. 开发环境有更新时如何自动打包</a></strong><br><strong><a href="#如何处理图片，字体，多媒体等资源文件">3. 如何处理图片，字体，多媒体等资源文件</a></strong><br><strong><a href="#如何使用sass">4. 如何使用sass</a></strong><br><strong><a href="#如何优化CSS">5. 如何优化CSS</a></strong><br><strong><a href="#如何分块">6. 如何分块</a></strong><br><strong><a href="#如何压缩">7. 如何压缩</a></strong><br><strong><a href="#总结">8. 总结</a></strong></p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2019/10/11/issues_for_webpack/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck1oh9ebw0006msva2stzdxs1" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
+<article id="post-http-server" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/http-server/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.465Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/http-server/">有关http-server的两个问题的解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>无法访问首页，或者提示ERR_INVALID_REDIRECT</li>
+</ol>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server -g -p <span class="number">4205</span></span><br></pre></td></tr></table></figure>
+<p>   运行上面的命令，然后在浏览器访问：<a href="http://localhost:4205" target="_blank" rel="noopener">http://localhost:4205</a> 你会发现无法打开首页，提示ERR_INVALID_REDIRECT<br>   如果访问：<a href="http://localhost:4205/index.html" target="_blank" rel="noopener">http://localhost:4205/index.html</a> 确能正常访问，不过如果带上history路由访问单页应用还是不行。</p>
+<p>   目前发现0.11版本有这个问题，只要将其降级到0.9.0版本即可解决，参考以下链接：<br>   <a href="https://github.com/http-party/http-server/issues/525" target="_blank" rel="noopener">https://github.com/http-party/http-server/issues/525</a> 0.9.0以上其他版本是否有同样的问题未知。</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall http-server -g</span><br><span class="line">npm install http-server@<span class="number">0.9</span> -g</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>单页应用时http-server不支持history模式的路由</li>
+</ol>
+<p>   先安装spa-http-server，然后在http-server启动参数增加–push-state即可。</p>
+   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install spa-http-server</span><br><span class="line">http-server -g -p <span class="number">4205</span> --push-state</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck1oh9ebl0001msvasr05afnm" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/http-server/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/http-server/">http-server</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
+<article id="post-http_cors" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/http_cors/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.465Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/http_cors/">HTTP访问控制CORS</a>
     </h1>
   
 
@@ -129,16 +250,16 @@
 <li><a href="#相关HTTP响应头字段"><strong>相关HTTP响应头字段</strong></a>
         
           <p class="article-more-link">
-            <a href="/blog/2019/08/19/http_cors/#more">Read More</a>
+            <a href="/blog/2019/10/11/http_cors/#more">Read More</a>
           </p>
         
       
     </li></ol></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/08/19/http_cors/" data-id="ck0uvs9u20004ikurn9k1f7lz" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck1oh9ebr0004msvamy16pxxl" class="article-share-link">Share</a>
       
-        <a href="https://ywxgod.github.io/blog/2019/08/19/http_cors/#comments" class="article-comment-link">留言</a>
+        <a href="https://ywxgod.github.io/blog/2019/10/11/http_cors/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/CORS/">CORS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/跨域/">跨域</a></li></ul>
@@ -155,16 +276,16 @@
 
   
     
-<article id="post-canvas/canvas_text_position" class="article article-type-post" itemscope="" itemprop="blogPost">
+<article id="post-elementui_load_demand" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/blog/2019/08/19/canvas/canvas_text_position/" class="article-date">
-  <time datetime="2019-08-19T15:44:23.727Z" itemprop="datePublished">2019-08-19</time>
+<a href="/blog/2019/10/11/elementui_load_demand/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.450Z" itemprop="datePublished">2019-10-11</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
   </div>
 
   </div>
@@ -175,7 +296,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/19/canvas/canvas_text_position/">Canvas中文本的定位</a>
+      <a class="article-title" href="/blog/2019/10/11/elementui_load_demand/">element-ui自定义主题无法按需加载的解决思考</a>
     </h1>
   
 
@@ -183,149 +304,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我们知道canvas中绘制文本主要有两个方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure>
-<p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p>
-<p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p>
-<p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br>
-        
-          </p><p class="article-more-link">
-            <a href="/blog/2019/08/19/canvas/canvas_text_position/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_text_position/" data-id="ck0uvs9ws001cikuri2p6yqjn" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-canvas/canvas_size_intro" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/08/19/canvas/canvas_size_intro/" class="article-date">
-  <time datetime="2019-08-19T15:44:23.726Z" itemprop="datePublished">2019-08-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/19/canvas/canvas_size_intro/">Canvas大小的设定</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通常设置canvas大小有两种方法:</p>
+        <h2 id="官方按需加载的实现"><a href="#官方按需加载的实现" class="headerlink" title="官方按需加载的实现"></a>官方按需加载的实现</h2><p>要实现自定义主题的按需加载通常要做以下三件事：</p>
 <ol>
-<li>通过css设置width与height</li>
-<li>通过canvas标签的属性width与height设置</li>
+<li>按需导入element-ui的组件，如：</li>
 </ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.canvas</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"150"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>两种方法的区别：<br>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">    Button, Select, Tooltip</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'element-ui'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> uis = [</span><br><span class="line">    Button, Select, Tooltip</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">Vue.prototype.$ELEMENT = &#123; <span class="attr">size</span>: <span class="string">'small'</span>, <span class="attr">zIndex</span>: <span class="number">3000</span> &#125;;</span><br><span class="line"></span><br><span class="line">uis.forEach(<span class="function"><span class="params">C</span>=&gt;</span>Vue.use(C));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> uis;</span><br></pre></td></tr></table></figure>
         
-          </p><p class="article-more-link">
-            <a href="/blog/2019/08/19/canvas/canvas_size_intro/#more">Read More</a>
+          <p class="article-more-link">
+            <a href="/blog/2019/10/11/elementui_load_demand/#more">Read More</a>
           </p>
         
       
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_size_intro/" data-id="ck0uvs9ww001gikur1ndb48e9" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck1oh9ebd0000msva80iiv8kw" class="article-share-link">Share</a>
       
-        <a href="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_size_intro/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-canvas/canvas_keyboard_events" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/08/19/canvas/canvas_keyboard_events/" class="article-date">
-  <time datetime="2019-08-19T15:44:23.725Z" itemprop="datePublished">2019-08-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/08/19/canvas/canvas_keyboard_events/">Canvas的键盘事件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keydown'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keydown'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keyup'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keypress'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keypress'</span>,e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>如果按下的时可见字符，keypress事件会在keydown与keyup事件之间触发，否则不会触发。<br>如果按下某个可见字符持续一段时间，浏览器(谷歌)会循环触发keydown，keypress事件，直到松开按键触发一次keyup事件。</p>
-<p><strong>要想知道按下的是哪个键，一般可以从传给事件处理函数的事件对象中获取。</strong></p>
-<p>对于keydown，keyup事件，其事件对象的keyCode属性一般会保存按下的可见字符的ASCII码，如果是不可见字符，可以读取altKey，ctrlKey，metaKey，shiftKey这些属性来判断。<br>对于keypress事件，一定可以用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.fromCharCode(event.which)</span><br></pre></td></tr></table></figure>
-<p>获取当前按下的字符。</p>
-
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_keyboard_events/" data-id="ck0uvs9wr001bikurb1zde173" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/08/19/canvas/canvas_keyboard_events/#comments" class="article-comment-link">留言</a>
+        <a href="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/#comments" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/element-ui/">element-ui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/按需加载/">按需加载</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a></li></ul>
 
     </footer>
   </div>
@@ -357,31 +355,31 @@
         
           
           <li>
-            <a href="/blog/2019/09/27/mongoose/mongoose_issues/">mongoose链接数据库时的两个警告处理</a>
+            <a href="/blog/2019/10/11/css/style_categories/">样式代码结构参考</a>
           </li>
           
         
           
           <li>
-            <a href="/blog/2019/09/22/elementui_load_demand/">element-ui自定义主题无法按需加载的解决思考</a>
+            <a href="/blog/2019/10/11/mongoose/mongoose_issues/">mongoose链接数据库时的两个警告处理</a>
           </li>
           
         
           
           <li>
-            <a href="/blog/2019/09/21/http-server/">有关http-server的两个问题的解决方法</a>
+            <a href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
           </li>
           
         
           
           <li>
-            <a href="/blog/2019/09/01/css/css_foundation/">css基础知识</a>
+            <a href="/blog/2019/10/11/canvas/canvas_size_intro/">Canvas大小的设定</a>
           </li>
           
         
           
           <li>
-            <a href="/blog/2019/08/21/css/style_categories/">样式代码结构参考</a>
+            <a href="/blog/2019/10/11/css/css_foundation/">css基础知识</a>
           </li>
           
         
@@ -423,7 +421,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/09/">九月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/08/">八月 2019</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">14</span></li></ul>
     </div>
   </div>
 

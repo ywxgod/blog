@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>css基础知识 | Web Snippets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="baidu-site-verification" content="oLJXAOYkTP">
+  <meta name="description" content="普通说明 普通文档流中的块框外边距会叠加，但行内块，浮动框，绝对定位的块是不会叠加的。 修改行内框的唯一方式是修改行高或者水平边框、外边距、内边距。 inline-block让元素按照行内框水平排列，但可以设置其宽度高端。 相对定位是相对于自身在文档流中的初始位置，绝对定位是相对于距离它最近的已定位祖先元素。 已定位元素是指position值为relative，absolute或者fixed。">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css基础知识">
+<meta property="og:url" content="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/index.html">
+<meta property="og:site_name" content="Web Snippets">
+<meta property="og:description" content="普通说明 普通文档流中的块框外边距会叠加，但行内块，浮动框，绝对定位的块是不会叠加的。 修改行内框的唯一方式是修改行高或者水平边框、外边距、内边距。 inline-block让元素按照行内框水平排列，但可以设置其宽度高端。 相对定位是相对于自身在文档流中的初始位置，绝对定位是相对于距离它最近的已定位祖先元素。 已定位元素是指position值为relative，absolute或者fixed。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-01T09:59:15.983Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css基础知识">
+<meta name="twitter:description" content="普通说明 普通文档流中的块框外边距会叠加，但行内块，浮动框，绝对定位的块是不会叠加的。 修改行内框的唯一方式是修改行高或者水平边框、外边距、内边距。 inline-block让元素按照行内框水平排列，但可以设置其宽度高端。 相对定位是相对于自身在文档流中的初始位置，绝对定位是相对于距离它最近的已定位祖先元素。 已定位元素是指position值为relative，absolute或者fixed。">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/highlight/styles/darkula.css">
+  <script src="/blog/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header" style="height: 60px;">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Web Snippets</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">code，food，english，history</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">首页</a>
+        
+          <a class="main-nav-link" href="/blog/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <div>
+        <script>
+        (function() {
+          /*var cx = '014509043148742714522:kpw0mr56_rs';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);*/
+        })();
+      </script>
+      <!--<gcse:search></gcse:search>-->
+      </div>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ywxgod.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+<article id="post-css/css_foundation" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/css/css_foundation/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css基础知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="普通说明"><a href="#普通说明" class="headerlink" title="普通说明"></a>普通说明</h2><ul>
+<li>普通文档流中的块框外边距会叠加，但行内块，浮动框，绝对定位的块是不会叠加的。</li>
+<li>修改行内框的唯一方式是修改行高或者水平边框、外边距、内边距。</li>
+<li>inline-block让元素按照行内框水平排列，但可以设置其宽度高端。</li>
+<li>相对定位是相对于自身在文档流中的初始位置，绝对定位是相对于距离它最近的已定位祖先元素。</li>
+<li>已定位元素是指position值为relative，absolute或者fixed。</li>
+</ul>
+<h2 id="背景图像效果"><a href="#背景图像效果" class="headerlink" title="背景图像效果"></a>背景图像效果</h2><h3 id="基本知识点"><a href="#基本知识点" class="headerlink" title="基本知识点"></a>基本知识点</h3><h4 id="默认情况，背景图像会被水平和垂直地重复显示。"><a href="#默认情况，背景图像会被水平和垂直地重复显示。" class="headerlink" title="默认情况，背景图像会被水平和垂直地重复显示。"></a>默认情况，背景图像会被水平和垂直地重复显示。</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(https://www.baidu.com/img/bd_logo1.png)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="背景垂直渐变"><a href="#背景垂直渐变" class="headerlink" title="背景垂直渐变"></a>背景垂直渐变</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">1. 可以创建一张1像素宽，最够长的图像在x方向重复平铺</span></span><br><span class="line"><span class="comment">2. 将背景色设置为渐变色的最后一个颜色</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(/img/gradient.gif); <span class="comment">/** width=1,height=1000 */</span></span><br><span class="line">    <span class="attribute">background-repeat</span>: repeat-x;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ccc</span>; <span class="comment">/** 图片上最后的渐变色 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="固定宽高图片的显示"><a href="#固定宽高图片的显示" class="headerlink" title="固定宽高图片的显示"></a>固定宽高图片的显示</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#branding</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">700px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(/img/branding.gif);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="给指定元素增加图标"><a href="#给指定元素增加图标" class="headerlink" title="给指定元素增加图标"></a>给指定元素增加图标</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(/img/icon/doc.gif);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="comment">/** 水平方向定位在左侧，垂直方向居中显示 */</span></span><br><span class="line">    <span class="attribute">background-position</span>: left center; </span><br><span class="line">    <span class="comment">/** 还可以用百分百实现上面一样的效果，两者用其一 */</span></span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">0</span> <span class="number">50%</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>background-position用像素为单位时，相对于元素的左上角。用百分百时，是将相对于图像左上角百分百位置的点设置到相对于父元素左上角百分百位置的点上。</p>
+<h2 id="对链接应用样式"><a href="#对链接应用样式" class="headerlink" title="对链接应用样式"></a>对链接应用样式</h2><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>:link, :visited 需放置于:hover, :active, :focus之前，否则会被覆盖而不起作用。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * a:link 没有访问过的链接 </span></span><br><span class="line"><span class="comment"> * a:visited 访问过的链接</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span>&#123;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * a:hover 悬停</span></span><br><span class="line"><span class="comment"> * a:focus tab移动，获取焦点</span></span><br><span class="line"><span class="comment"> * a:active 被激活的链接，激活发生在链接被点击时</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:active</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:focus</span>&#123;</span><br><span class="line">    <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="下划线自定义"><a href="#下划线自定义" class="headerlink" title="下划线自定义"></a>下划线自定义</h3><p>可以用下边框替代，进而可以使用边框背景图</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 用下边框替代下划线 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span>&#123;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> dotted <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:active</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:focus</span>&#123;</span><br><span class="line">    <span class="attribute">border-bottom-style</span>: solid;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 用背景图替换下划线 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span>, <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#666</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">'https://www.baidu.com/img/baidu_jgylogo3.gif'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="给链接目标添加样式"><a href="#给链接目标添加样式" class="headerlink" title="给链接目标添加样式"></a>给链接目标添加样式</h3><p>链接目标是被锚点链接到的元素。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.target-element-selector</span><span class="selector-pseudo">:target</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="区分不同类型的链接"><a href="#区分不同类型的链接" class="headerlink" title="区分不同类型的链接"></a>区分不同类型的链接</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 通过属性选择器查找链接到外部页面的链接 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href^='http:']</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 邮箱链接 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href^='mailto:']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 区分可下载的链接 */</span></span><br><span class="line"><span class="selector-tag">a</span><span class="selector-attr">[href$='.pdf']</span>,<span class="selector-tag">a</span><span class="selector-attr">[href$='.doc']</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="创建按钮"><a href="#创建按钮" class="headerlink" title="创建按钮"></a>创建按钮</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">6.6em</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.4</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#66a300</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#8cca12</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      <div class="copyright copyright-container">
+      <div class="article-entry copyright-div">
+        本博客所有文章均为原创，如需转载请注明出处：<br>
+        作者：wyin<br>
+        邮箱：ywx1818@163.com<br>
+        来源：http://ywxgod.github.io/blog<br>
+      </div>
+      </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck1oh9ef0001imsvagp08ixkr" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+<section id="comments">
+    <div id="gitmentContainer"></div>
+    <link rel="stylesheet" href="/blog/css/custom/default.css">
+    <script src="/blog/js/gitment.browser.js"></script>
+    <script>
+      var gitment = new Gitment({
+          id: 'Fri Oct 11 2019 03:32:59 GMT+0800',
+          owner: 'ywxgod', 
+          repo: 'blog',
+          oauth: {
+              client_id: 'cb5071a3a89f450b30c2',
+              client_secret: '69efceee331ec865ef7cce997565a69e5bb0993c',
+          },
+      });
+      gitment.render('gitmentContainer')
+    </script>
+</section>
+
+
+
+
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2019/10/11/canvas/canvas_size_intro/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Canvas大小的设定
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2019/10/11/use_verdaccio/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用verdaccio搭建个人用npm私服</div>
+    </a>
+  
+</nav>
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          
+          <li>
+            <a href="/blog/2019/10/11/css/style_categories/">样式代码结构参考</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/10/11/mongoose/mongoose_issues/">mongoose链接数据库时的两个警告处理</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/10/11/canvas/canvas_size_intro/">Canvas大小的设定</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/10/11/css/css_foundation/">css基础知识</a>
+          </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 10px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 wyin
+      <br>
+      <div id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</div>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">首页</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="/blog/js/jquery-2.2.4.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
