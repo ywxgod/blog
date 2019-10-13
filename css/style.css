@@ -1294,7 +1294,16 @@ pre .javascript .function {
   color: #b9a7a7;
   font-weight: bold;
   font-size: 0.5rem;
-  padding: 10px;
+  padding: 0;
+/*padding: 10px;*/
+}
+.copyright-div .text {
+  padding: 5px 0;
+}
+.qr_code-img {
+  float: left;
+  width: 129px;
+  max-width: 100%;
 }
 #header-inner {
   z-index: 1;
