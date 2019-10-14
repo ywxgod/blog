@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Web Snippets">
 <meta property="og:description" content="服务器启动时，初始化了一些静态数据，当服务器退出时可能需要清掉这些数据，所以看看如何清除MongoDB的collections。 清除collections的几种方法： 通过connection.collections，如：12let collectionName = &apos;users&apos;;this.connection.collections[collectionName].drop() //drop">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-14T15:35:40.881Z">
+<meta property="og:updated_time" content="2019-10-14T15:40:53.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongoose如何清除collections">
 <meta name="twitter:description" content="服务器启动时，初始化了一些静态数据，当服务器退出时可能需要清掉这些数据，所以看看如何清除MongoDB的collections。 清除collections的几种方法： 通过connection.collections，如：12let collectionName = &apos;users&apos;;this.connection.collections[collectionName].drop() //drop">
@@ -121,6 +121,7 @@
 <li><h3 id="通过connection-collections，如："><a href="#通过connection-collections，如：" class="headerlink" title="通过connection.collections，如："></a>通过connection.collections，如：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> collectionName = <span class="string">'users'</span>;</span><br><span class="line"><span class="keyword">this</span>.connection.collections[collectionName].drop() <span class="comment">//drop方法清除名称为users的collection</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<a id="more"></a>    
 <ol start="2">
 <li><h3 id="通过connection-dropCollection方法，如："><a href="#通过connection-dropCollection方法，如：" class="headerlink" title="通过connection.dropCollection方法，如："></a>通过connection.dropCollection方法，如：</h3> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 通过调用dropCollection方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> collectionName = <span class="string">'users'</span>;</span><br><span class="line"><span class="keyword">this</span>.connection.dropCollection(collectionName).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res); <span class="comment">//true</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//res 为true表示删除成功</span></span><br></pre></td></tr></table></figure>
 </li>
