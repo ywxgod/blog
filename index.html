@@ -89,6 +89,71 @@
         <section id="main">
   
     
+<article id="post-mongoose/drop_collections" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/14/mongoose/drop_collections/" class="article-date">
+  <time datetime="2019-10-14T15:32:49.969Z" itemprop="datePublished">2019-10-14</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/14/mongoose/drop_collections/">mongoose如何清除collections</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>服务器启动时，初始化了一些静态数据，当服务器退出时可能需要清掉这些数据，所以看看如何清除MongoDB的collections。</p>
+<h2 id="清除collections的几种方法："><a href="#清除collections的几种方法：" class="headerlink" title="清除collections的几种方法："></a>清除collections的几种方法：</h2><ol>
+<li><h3 id="通过connection-collections，如："><a href="#通过connection-collections，如：" class="headerlink" title="通过connection.collections，如："></a>通过connection.collections，如：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> collectionName = <span class="string">'users'</span>;</span><br><span class="line"><span class="keyword">this</span>.connection.collections[collectionName].drop() <span class="comment">//drop方法清除名称为users的collection</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><h3 id="通过connection-dropCollection方法，如："><a href="#通过connection-dropCollection方法，如：" class="headerlink" title="通过connection.dropCollection方法，如："></a>通过connection.dropCollection方法，如：</h3> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 通过调用dropCollection方法</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> collectionName = <span class="string">'users'</span>;</span><br><span class="line"><span class="keyword">this</span>.connection.dropCollection(collectionName).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res); <span class="comment">//true</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//res 为true表示删除成功</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="通过Model-collection，-如："><a href="#通过Model-collection，-如：" class="headerlink" title="通过Model.collection， 如："></a>通过Model.collection， 如：</h3> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> collectionName = <span class="string">'user'</span>;</span><br><span class="line"><span class="keyword">let</span> UserSchema = <span class="keyword">new</span> mongoose.Schema(&#123;&#125;);</span><br><span class="line"><span class="keyword">let</span> UserModel = <span class="keyword">this</span>.connection.model(collectionName, UserSchema);</span><br><span class="line">UserModel.collections.drop(); <span class="comment">//删除collections</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>假如我们要在nodejs进程退出之前清除数据库里的临时数据，可以像下面这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearUsers</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> collectionName = <span class="string">'users'</span>;</span><br><span class="line">    <span class="keyword">this</span>.connection.dropCollection(collectionName).then(<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(res); <span class="comment">//true</span></span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">process.on(<span class="string">'SIGINT'</span>, () =&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//退出前清除初始化数据</span></span><br><span class="line">    <span class="keyword">this</span>.clearUsers();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//连接关闭时的事件</span></span><br><span class="line">    <span class="keyword">this</span>.connection.close( <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 如果在此处调用将无效，因为数据库连接已经断开。</span></span><br><span class="line">        <span class="comment">// this.clearUsers(); </span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'Mongoose disconnected through app termination'</span>);</span><br><span class="line">        process.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/" data-id="ck1qkza58001swsvap8f3n2ng" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mongoose/">mongoose</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
 <article id="post-jsinfo/operators" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
@@ -129,7 +194,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/" data-id="ck1on1cev001l1kvaib4awu0z" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/" data-id="ck1qkza54001lwsvak16vvclf" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/#comments" class="article-comment-link">留言</a>
       
@@ -211,7 +276,7 @@
     </li></ul></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/" data-id="ck1on1cer001g1kvaz8ku5jmw" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/" data-id="ck1qkza4y001fwsvarxrr1fea" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/#comments" class="article-comment-link">留言</a>
       
@@ -270,12 +335,73 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/" data-id="ck1on1cex001m1kvacnbm7w2u" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/" data-id="ck1qkza4z001gwsvazb2x0znd" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mongoose/">mongoose</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
+<article id="post-canvas/canvas_text_position" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/canvas/canvas_text_position/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道canvas中绘制文本主要有两个方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure>
+<p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p>
+<p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p>
+<p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br>
+        
+          </p><p class="article-more-link">
+            <a href="/blog/2019/10/11/canvas/canvas_text_position/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck1qkza4s001bwsva75mr3agx" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
 
     </footer>
   </div>
@@ -334,70 +460,9 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/" data-id="ck1on1cen001c1kvaqzqf2rpa" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/" data-id="ck1qkza50001hwsvaezzogidv" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-canvas/canvas_text_position" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/canvas/canvas_text_position/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们知道canvas中绘制文本主要有两个方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure>
-<p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p>
-<p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p>
-<p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br>
-        
-          </p><p class="article-more-link">
-            <a href="/blog/2019/10/11/canvas/canvas_text_position/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck1on1ceq001f1kvahdp675g6" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
@@ -459,7 +524,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck1on1ces001h1kval2owwdq2" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck1qkza56001owsvagdr7wz92" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/#comments" class="article-comment-link">留言</a>
       
@@ -520,7 +585,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck1on1cc0000f1kvars1n75wd" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck1qkza2a000fwsva0amtntxp" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/#comments" class="article-comment-link">留言</a>
       
@@ -579,7 +644,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck1on1cem001b1kvapv9vu9d8" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck1qkza4v001cwsvafaq8de35" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/#comments" class="article-comment-link">留言</a>
       
@@ -638,70 +703,12 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck1on1cbu000a1kvaabsa6zvr" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck1qkza1x0005wsvado0dajlg" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/sublime-text/">sublime text</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-use_promise" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/use_promise/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.496Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/code/">code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/use_promise/">Promise与请求超时</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近项目有个需求，需要对所有ajax请求增加超时处理，以前是没有的。<br>不管是axios还是原始的XMLHttpRequest都提供了超时设置，正常来说我们可以先设置一个超时时间，然后再在错误事件中区别出timeout错误，这样就可以统一处理，不过前提是你的请求应该是统一经过一个地方发出，不然修改的地方就多了。</p>
-<p>上面的方法可以达到目的，只是不是很好，下面的有两种更妙的方法：<br>
-        
-          </p><p class="article-more-link">
-            <a href="/blog/2019/10/11/use_promise/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck1on1cbx000b1kvasq6s8xjv" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/use_promise/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/timeout/">timeout</a></li></ul>
 
     </footer>
   </div>
@@ -733,6 +740,12 @@
         
           
           <li>
+            <a href="/blog/2019/10/14/mongoose/drop_collections/">mongoose如何清除collections</a>
+          </li>
+          
+        
+          
+          <li>
             <a href="/blog/2019/10/13/jsinfo/operators/">001 - JS操作符注意点</a>
           </li>
           
@@ -751,12 +764,6 @@
         
           
           <li>
-            <a href="/blog/2019/10/11/canvas/canvas_size_intro/">Canvas大小的设定</a>
-          </li>
-          
-        
-          
-          <li>
             <a href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
           </li>
           
@@ -770,7 +777,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -780,7 +787,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -790,7 +797,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 10px;">JS操作符</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 10px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 10px;">JS操作符</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 15px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
     </div>
   </div>
 
@@ -799,7 +806,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">15</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">16</span></li></ul>
     </div>
   </div>
 

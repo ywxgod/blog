@@ -89,11 +89,11 @@
         <section id="main">
   
     
-<article id="post-issues_for_webpack" class="article article-type-post" itemscope="" itemprop="blogPost">
+<article id="post-use_promise" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/blog/2019/10/11/issues_for_webpack/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
+<a href="/blog/2019/10/11/use_promise/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.496Z" itemprop="datePublished">2019-10-11</time>
 </a>
 
     
@@ -109,7 +109,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/issues_for_webpack/">用webpack打包的常见问题</a>
+      <a class="article-title" href="/blog/2019/10/11/use_promise/">Promise与请求超时</a>
     </h1>
   
 
@@ -117,23 +117,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>webpack配置项太多，要完全完美的写一个webpack配置需要了解太多的东西了，下面记录的是自己学习过程中感到比较重要的地方和处理方法，当然处理方法不止一种，这里只是其中的一种而已。<br>本文参考于：<a href="https://survivejs.com/webpack/foreword/" target="_blank" rel="noopener">https://survivejs.com/webpack/foreword/</a>，那里有详细的英文文档。</p>
-<p><strong><a href="#如何传不同的环境变量产生不同的输出">1. 如何传不同的环境变量产生不同的输出</a></strong><br><strong><a href="#开发环境有更新时如何自动打包">2. 开发环境有更新时如何自动打包</a></strong><br><strong><a href="#如何处理图片，字体，多媒体等资源文件">3. 如何处理图片，字体，多媒体等资源文件</a></strong><br><strong><a href="#如何使用sass">4. 如何使用sass</a></strong><br><strong><a href="#如何优化CSS">5. 如何优化CSS</a></strong><br><strong><a href="#如何分块">6. 如何分块</a></strong><br><strong><a href="#如何压缩">7. 如何压缩</a></strong><br><strong><a href="#总结">8. 总结</a></strong></p>
+        <p>最近项目有个需求，需要对所有ajax请求增加超时处理，以前是没有的。<br>不管是axios还是原始的XMLHttpRequest都提供了超时设置，正常来说我们可以先设置一个超时时间，然后再在错误事件中区别出timeout错误，这样就可以统一处理，不过前提是你的请求应该是统一经过一个地方发出，不然修改的地方就多了。</p>
+<p>上面的方法可以达到目的，只是不是很好，下面的有两种更妙的方法：<br>
         
-          <p class="article-more-link">
-            <a href="/blog/2019/10/11/issues_for_webpack/#more">Read More</a>
+          </p><p class="article-more-link">
+            <a href="/blog/2019/10/11/use_promise/#more">Read More</a>
           </p>
         
       
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck1on1cbo00051kva64illrdb" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck1qkza24000awsvad6xep3ak" class="article-share-link">Share</a>
       
-        <a href="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/#comments" class="article-comment-link">留言</a>
+        <a href="https://ywxgod.github.io/blog/2019/10/11/use_promise/#comments" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/timeout/">timeout</a></li></ul>
 
     </footer>
   </div>
@@ -183,12 +183,70 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck1on1cbq00061kvaqpau2z5a" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck1qkza1u0004wsva0l0ivfjg" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
+<article id="post-issues_for_webpack" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/issues_for_webpack/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/issues_for_webpack/">用webpack打包的常见问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>webpack配置项太多，要完全完美的写一个webpack配置需要了解太多的东西了，下面记录的是自己学习过程中感到比较重要的地方和处理方法，当然处理方法不止一种，这里只是其中的一种而已。<br>本文参考于：<a href="https://survivejs.com/webpack/foreword/" target="_blank" rel="noopener">https://survivejs.com/webpack/foreword/</a>，那里有详细的英文文档。</p>
+<p><strong><a href="#如何传不同的环境变量产生不同的输出">1. 如何传不同的环境变量产生不同的输出</a></strong><br><strong><a href="#开发环境有更新时如何自动打包">2. 开发环境有更新时如何自动打包</a></strong><br><strong><a href="#如何处理图片，字体，多媒体等资源文件">3. 如何处理图片，字体，多媒体等资源文件</a></strong><br><strong><a href="#如何使用sass">4. 如何使用sass</a></strong><br><strong><a href="#如何优化CSS">5. 如何优化CSS</a></strong><br><strong><a href="#如何分块">6. 如何分块</a></strong><br><strong><a href="#如何压缩">7. 如何压缩</a></strong><br><strong><a href="#总结">8. 总结</a></strong></p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2019/10/11/issues_for_webpack/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck1qkza26000bwsva5cad0g84" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li></ul>
 
     </footer>
   </div>
@@ -246,7 +304,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck1on1cb400001kvagknbrx0z" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck1qkza1f0000wsvazlstol1p" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http-server/#comments" class="article-comment-link">留言</a>
       
@@ -312,7 +370,7 @@
     </li></ol></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck1on1cbl00041kva3vuj53ei" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck1qkza1o0001wsvaigld99ur" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http_cors/#comments" class="article-comment-link">留言</a>
       
@@ -373,7 +431,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck1on1cbf00011kva84bbui35" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck1qkza1z0006wsvahie22lff" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/#comments" class="article-comment-link">留言</a>
       
@@ -410,6 +468,12 @@
         
           
           <li>
+            <a href="/blog/2019/10/14/mongoose/drop_collections/">mongoose如何清除collections</a>
+          </li>
+          
+        
+          
+          <li>
             <a href="/blog/2019/10/13/jsinfo/operators/">001 - JS操作符注意点</a>
           </li>
           
@@ -428,12 +492,6 @@
         
           
           <li>
-            <a href="/blog/2019/10/11/canvas/canvas_size_intro/">Canvas大小的设定</a>
-          </li>
-          
-        
-          
-          <li>
             <a href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
           </li>
           
@@ -447,7 +505,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -457,7 +515,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -467,7 +525,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 10px;">JS操作符</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 10px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 10px;">JS操作符</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 15px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
     </div>
   </div>
 
@@ -476,7 +534,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">15</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">16</span></li></ul>
     </div>
   </div>
 
