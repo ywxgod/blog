@@ -129,7 +129,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck1qkza1x0005wsvado0dajlg" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck1qoxwb20009psva31wjek8o" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/#comments" class="article-comment-link">留言</a>
       
@@ -187,67 +187,12 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck1qkza24000awsvad6xep3ak" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck1qoxwb4000apsvaf216wb7e" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/use_promise/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/timeout/">timeout</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-remove_array_duplicates_in_es6" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/remove_array_duplicates_in_es6/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/code/">code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/remove_array_duplicates_in_es6/">ES6数组去重的三种方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ES6数组去重我们可以用以下三种方法：</p>
-<h4 id="1-使用Set"><a href="#1-使用Set" class="headerlink" title="1. 使用Set"></a>1. 使用Set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(array)]); <span class="comment">//[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-使用filter函数"><a href="#2-使用filter函数" class="headerlink" title="2. 使用filter函数"></a>2. 使用filter函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.filter(<span class="function">(<span class="params">item,index</span>)=&gt;</span>array.findIndex(<span class="function"><span class="params">i</span>=&gt;</span>i==item)==index);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-使用reduce函数"><a href="#3-使用reduce函数" class="headerlink" title="3. 使用reduce函数"></a>3. 使用reduce函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.reduce(<span class="function">(<span class="params">res,item</span>)=&gt;</span>res.includes(item)?res:[...res,item],[]);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck1qkza1u0004wsva0l0ivfjg" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li></ul>
 
     </footer>
   </div>
@@ -300,12 +245,67 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck1qkza26000bwsva5cad0g84" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck1qoxwav0005psvam7lkcbaw" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
+<article id="post-remove_array_duplicates_in_es6" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/remove_array_duplicates_in_es6/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/remove_array_duplicates_in_es6/">ES6数组去重的三种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ES6数组去重我们可以用以下三种方法：</p>
+<h4 id="1-使用Set"><a href="#1-使用Set" class="headerlink" title="1. 使用Set"></a>1. 使用Set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(array)]); <span class="comment">//[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-使用filter函数"><a href="#2-使用filter函数" class="headerlink" title="2. 使用filter函数"></a>2. 使用filter函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.filter(<span class="function">(<span class="params">item,index</span>)=&gt;</span>array.findIndex(<span class="function"><span class="params">i</span>=&gt;</span>i==item)==index);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-使用reduce函数"><a href="#3-使用reduce函数" class="headerlink" title="3. 使用reduce函数"></a>3. 使用reduce函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.reduce(<span class="function">(<span class="params">res,item</span>)=&gt;</span>res.includes(item)?res:[...res,item],[]);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck1qoxwax0006psva04zhfpa7" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li></ul>
 
     </footer>
   </div>
@@ -363,7 +363,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck1qkza1f0000wsvazlstol1p" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck1qoxwam0001psvajpvo5vp1" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http-server/#comments" class="article-comment-link">留言</a>
       
@@ -429,7 +429,7 @@
     </li></ol></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck1qkza1o0001wsvaigld99ur" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck1qoxwat0004psvam8fssncm" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http_cors/#comments" class="article-comment-link">留言</a>
       
@@ -490,7 +490,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck1qkza1z0006wsvahie22lff" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck1qoxwab0000psvaaidfhz7u" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/#comments" class="article-comment-link">留言</a>
       
