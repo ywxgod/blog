@@ -117,7 +117,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="003-JS的类型转换"><a href="#003-JS的类型转换" class="headerlink" title="003 - JS的类型转换"></a>003 - JS的类型转换</h1><p>JS的类型一般有String，Number，Boolean，Symbol，null，undefined，Object这几种，其中前四种可以认为是简单类型，Object是复杂类型（包括Array，Date等），中间两种自成一体。</p>
+        <p>JS的类型一般有String，Number，Boolean，Symbol，null，undefined，Object这几种，其中前四种可以认为是简单类型，Object是复杂类型（包括Array，Date等），中间两种自成一体。</p>
 <p>我们都知道JS是弱类型的语言，所以难免会进行类型转换，而转换又有显式和隐式之分。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> == <span class="literal">null</span>			<span class="comment">// false</span></span><br><span class="line"><span class="number">2</span> / <span class="string">'5'</span>				<span class="comment">// 0.4</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'3'</span>)			<span class="comment">// 3</span></span><br><span class="line"><span class="number">1</span> === <span class="literal">null</span>			<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 <p>第一，二行会进行隐式转换，第三行是显式转换，而第四行不会转换类型。这里先讨论隐式转换，无论是简单类型还是复杂类型，隐式转为最后都会转为boolean，string或者number中的一种。</p>
