@@ -89,6 +89,68 @@
         <section id="main">
   
     
+<article id="post-jsinfo/symbols" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/18/jsinfo/symbols/" class="article-date">
+  <time datetime="2019-10-17T17:56:49.101Z" itemprop="datePublished">2019-10-18</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/18/jsinfo/symbols/">004 - Symbols介绍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="对Symbol的三个认知："><a href="#对Symbol的三个认知：" class="headerlink" title="对Symbol的三个认知："></a>对Symbol的三个认知：</h2><ol>
+<li>没有两个Symbol是相同的；</li>
+<li>Symbol是一种简单类型，可以和字符串一样作为Object类型的键值，可以通过[ ]直接访问；</li>
+<li>Symbol类型不可以隐式转换类型，且只可以进行显示调用sym.toString/String(sym)/Boolean(sym)进行转换，所以任何隐式转换的运算都会报错。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> symbol1 = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> symbol2 = <span class="built_in">Symbol</span>();</span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line">obj[symbol1] = <span class="number">1</span>;</span><br><span class="line">obj[symbol2] = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj[symbol1]); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(obj[symbol2]); <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> symbol1; <span class="comment">// 'symbol'</span></span><br><span class="line">symbol1 == symbol2; <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">symbol1 + <span class="number">2</span>; <span class="comment">// TypeError</span></span><br><span class="line">symbol1.toString() + <span class="number">2</span>; <span class="comment">// 'Symbol()2'</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/blog/2019/10/18/jsinfo/symbols/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/18/jsinfo/symbols/" data-id="ck1v0dhra001t98varhl4z8fc" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/18/jsinfo/symbols/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/code/">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
 <article id="post-jsinfo/type_conversion" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
@@ -131,7 +193,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/17/jsinfo/type_conversion/" data-id="ck1tmdoeh001u5ovackzvdgiq" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/17/jsinfo/type_conversion/" data-id="ck1v0dhr3001l98va47aua03n" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/17/jsinfo/type_conversion/#comments" class="article-comment-link">留言</a>
       
@@ -191,7 +253,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/15/jsinfo/comparions/" data-id="ck1tmdoe3001f5ova8ryxkik2" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/15/jsinfo/comparions/" data-id="ck1v0dhr5001m98vavvs1g4tl" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/15/jsinfo/comparions/#comments" class="article-comment-link">留言</a>
       
@@ -252,7 +314,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/" data-id="ck1tmdoek001x5ova2qdry0ep" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/" data-id="ck1v0dhrc001x98vailry2kkr" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/#comments" class="article-comment-link">留言</a>
       
@@ -311,7 +373,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/" data-id="ck1tmdoe6001h5ovafzzxetlh" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/" data-id="ck1v0dhr8001r98vat6rg04ob" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/#comments" class="article-comment-link">留言</a>
       
@@ -393,7 +455,7 @@
     </li></ul></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/" data-id="ck1tmdoeb001n5ovasgni12o3" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/" data-id="ck1v0dhqz001g98vag9obdgxk" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/#comments" class="article-comment-link">留言</a>
       
@@ -452,7 +514,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/" data-id="ck1tmdoef001s5ova37vrur5r" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/" data-id="ck1v0dhre001z98vaxttyx91s" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/#comments" class="article-comment-link">留言</a>
       
@@ -513,7 +575,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck1tmdodz001b5ovajzp0i93l" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck1v0dhqu001b98vadyk8mgda" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
       
@@ -577,7 +639,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/" data-id="ck1tmdoe5001g5ova3embdrk2" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/" data-id="ck1v0dhqx001f98vanv6dhu1i" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/#comments" class="article-comment-link">留言</a>
       
@@ -641,73 +703,12 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck1tmdoea001l5ovapytbg6qt" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck1v0dhr0001h98va7q4mi5q5" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-use_verdaccio" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/use_verdaccio/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.512Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/code/">code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/use_verdaccio/">用verdaccio搭建个人用npm私服</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Verdaccio 这个怎么发音？什么意思？谷歌给出的解释：</p>
-<blockquote>
-<p><b><a href="https://verdaccio.org/" target="_blank" rel="noopener">Verdaccio</a></b> is an Italian name for the mixture of black, white, and yellow pigments resulting in a grayish or yellowish (depending on the proportion) soft greenish brown.</p>
-</blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装 - -"></a>安装 - -</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g verdaccio</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/blog/2019/10/11/use_verdaccio/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck1tmdobb000b5ovaam609s2q" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/npm/">npm</a></li></ul>
 
     </footer>
   </div>
@@ -739,6 +740,12 @@
         
           
           <li>
+            <a href="/blog/2019/10/18/jsinfo/symbols/">004 - Symbols介绍</a>
+          </li>
+          
+        
+          
+          <li>
             <a href="/blog/2019/10/17/jsinfo/type_conversion/">003 - JS类型转换</a>
           </li>
           
@@ -761,12 +768,6 @@
           </li>
           
         
-          
-          <li>
-            <a href="/blog/2019/10/11/css/style_categories/">样式代码结构参考</a>
-          </li>
-          
-        
       </ul>
     </div>
   </div>
@@ -776,7 +777,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">7</span></li></ul>
     </div>
   </div>
 
@@ -786,7 +787,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -796,7 +797,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 15px;">JS操作符</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 10px;">code</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 15px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 15px;">JS操作符</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 15px;">code</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 15px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
     </div>
   </div>
 
@@ -805,7 +806,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">18</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">19</span></li></ul>
     </div>
   </div>
 
