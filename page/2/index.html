@@ -89,16 +89,16 @@
         <section id="main">
   
     
-<article id="post-canvas/canvas_size_intro" class="article article-type-post" itemscope="" itemprop="blogPost">
+<article id="post-css/css_foundation" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/blog/2019/10/11/canvas/canvas_size_intro/" class="article-date">
+<a href="/blog/2019/10/11/css/css_foundation/" class="article-date">
   <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
   </div>
 
   </div>
@@ -109,7 +109,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_size_intro/">Canvas大小的设定</a>
+      <a class="article-title" href="/blog/2019/10/11/css/css_foundation/">css基础知识</a>
     </h1>
   
 
@@ -117,29 +117,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>通常设置canvas大小有两种方法:</p>
-<ol>
-<li>通过css设置width与height</li>
-<li>通过canvas标签的属性width与height设置</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.canvas</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">300px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"150"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>两种方法的区别：<br>
+        <h2 id="普通说明"><a href="#普通说明" class="headerlink" title="普通说明"></a>普通说明</h2><ul>
+<li>普通文档流中的块框外边距会叠加，但行内块，浮动框，绝对定位的块是不会叠加的。</li>
+<li>修改行内框的唯一方式是修改行高或者水平边框、外边距、内边距。</li>
+<li>inline-block让元素按照行内框水平排列，但可以设置其宽度高端。</li>
+<li>相对定位是相对于自身在文档流中的初始位置，绝对定位是相对于距离它最近的已定位祖先元素。</li>
+<li>已定位元素是指position值为relative，absolute或者fixed。</li>
+</ul>
+<h2 id="背景图像效果"><a href="#背景图像效果" class="headerlink" title="背景图像效果"></a>背景图像效果</h2><h3 id="基本知识点"><a href="#基本知识点" class="headerlink" title="基本知识点"></a>基本知识点</h3><h4 id="默认情况，背景图像会被水平和垂直地重复显示。"><a href="#默认情况，背景图像会被水平和垂直地重复显示。" class="headerlink" title="默认情况，背景图像会被水平和垂直地重复显示。"></a>默认情况，背景图像会被水平和垂直地重复显示。</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(https://www.baidu.com/img/bd_logo1.png)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
-          </p><p class="article-more-link">
-            <a href="/blog/2019/10/11/canvas/canvas_size_intro/#more">Read More</a>
+          <p class="article-more-link">
+            <a href="/blog/2019/10/11/css/css_foundation/#more">Read More</a>
           </p>
         
       
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/" data-id="ck23k7tjl001idkvaup8vqeza" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck23kev4x001lfovapb15gu1b" class="article-share-link">Share</a>
       
-        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/#comments" class="article-comment-link">留言</a>
+        <a href="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/#comments" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/">css</a></li></ul>
 
     </footer>
   </div>
@@ -195,7 +195,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck23k7tgf0006dkvabfkgjq9u" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck23kev24000efovavg3tmmwf" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/#comments" class="article-comment-link">留言</a>
       
@@ -254,7 +254,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck23k7tjj001fdkvaeaboq82r" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck23kev4o001bfovajil5vdss" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/#comments" class="article-comment-link">留言</a>
       
@@ -313,7 +313,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck23k7tgm000adkvaxvtbxjty" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck23kev1y0009fovae8ykau1x" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/#comments" class="article-comment-link">留言</a>
       
@@ -371,7 +371,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck23k7tgq000edkvaxhephvzv" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck23kev20000afovayico3bu9" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/use_promise/#comments" class="article-comment-link">留言</a>
       
@@ -429,7 +429,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck23k7tgb0004dkvaolfyumxs" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck23kev1r0005fovabjz4z0pr" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/#comments" class="article-comment-link">留言</a>
       
@@ -484,7 +484,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck23k7tgk0009dkvacb83w0t0" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck23kev1t0006fovafkr238sp" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
       
@@ -547,7 +547,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck23k7tg40001dkvazyj3eohf" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck23kev1i0001fovag0zorg6o" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http-server/#comments" class="article-comment-link">留言</a>
       
@@ -613,7 +613,7 @@
     </li></ol></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck23k7tgd0005dkvayf7bng96" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck23kev1p0004fovaqn1t0281" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http_cors/#comments" class="article-comment-link">留言</a>
       
@@ -674,7 +674,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck23k7tfw0000dkvakxxddl9a" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck23kev1a0000fova43yq1l7t" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/#comments" class="article-comment-link">留言</a>
       
