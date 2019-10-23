@@ -267,32 +267,6 @@
   </entry>
   
   <entry>
-    <title>Canvas中文本的定位</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
-    <published>2019-10-10T19:32:59.528Z</published>
-    <updated>2019-08-19T15:44:23.727Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
-&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
-&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
-    
-    
-      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
-    
-  </entry>
-  
-  <entry>
     <title>css基础知识</title>
     <link href="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/"/>
     <id>https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/</id>
@@ -318,6 +292,32 @@
     
     
       <category term="css" scheme="https://ywxgod.github.io/blog/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Canvas中文本的定位</title>
+    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
+    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
+    <published>2019-10-10T19:32:59.528Z</published>
+    <updated>2019-08-19T15:44:23.727Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
+&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
+&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
+    
+    
+      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
     
   </entry>
   
