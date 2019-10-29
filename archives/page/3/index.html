@@ -5,21 +5,20 @@
   
 
   
-  <title>Canvas的键盘事件 | Web Snippets</title>
+  <title>归档 | Web Snippets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="oLJXAOYkTP">
-  <meta name="description" content="canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。 1234567891011document.addEventListener(&apos;keydown&apos;, function(e)&amp;#123;    console.log(&apos;keydown&apos;,e);&amp;#125;);document.addEventListener(&apos;">
-<meta name="keywords" content="canvas">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Canvas的键盘事件">
-<meta property="og:url" content="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/index.html">
+  <meta name="description" content="Code，Food，English，History">
+<meta name="keywords" content="Code，Food，English，History">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Web Snippets">
+<meta property="og:url" content="https://ywxgod.github.io/blog/archives/page/3/index.html">
 <meta property="og:site_name" content="Web Snippets">
-<meta property="og:description" content="canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。 1234567891011document.addEventListener(&apos;keydown&apos;, function(e)&amp;#123;    console.log(&apos;keydown&apos;,e);&amp;#125;);document.addEventListener(&apos;">
+<meta property="og:description" content="Code，Food，English，History">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-19T15:44:23.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Canvas的键盘事件">
-<meta name="twitter:description" content="canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。 1234567891011document.addEventListener(&apos;keydown&apos;, function(e)&amp;#123;    console.log(&apos;keydown&apos;,e);&amp;#125;);document.addEventListener(&apos;">
+<meta name="twitter:title" content="Web Snippets">
+<meta name="twitter:description" content="Code，Food，English，History">
   
     <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
   
@@ -88,114 +87,46 @@
 </header>
       <div class="outer">
         <section id="main">
-<article id="post-canvas/canvas_keyboard_events" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
+  
+  
     
-<a href="/blog/2019/10/11/canvas/canvas_keyboard_events/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.512Z" itemprop="datePublished">2019-10-11</time>
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/blog/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+<a href="/blog/2019/10/11/elementui_load_demand/" class="archive-article-date">
+  <time datetime="2019-10-10T19:32:59.450Z" itemprop="datePublished">10月 11</time>
 </a>
 
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      
   
-    <h1 class="article-title" itemprop="name">
-      Canvas的键盘事件
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/blog/2019/10/11/elementui_load_demand/">element-ui自定义主题无法按需加载的解决思考</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keydown'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keydown'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keyup'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keypress'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keypress'</span>,e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>如果按下的时可见字符，keypress事件会在keydown与keyup事件之间触发，否则不会触发。<br>如果按下某个可见字符持续一段时间，浏览器(谷歌)会循环触发keydown，keypress事件，直到松开按键触发一次keyup事件。</p>
-<p><strong>要想知道按下的是哪个键，一般可以从传给事件处理函数的事件对象中获取。</strong></p>
-<p>对于keydown，keyup事件，其事件对象的keyCode属性一般会保存按下的可见字符的ASCII码，如果是不可见字符，可以读取altKey，ctrlKey，metaKey，shiftKey这些属性来判断。<br>对于keypress事件，一定可以用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.fromCharCode(event.which)</span><br></pre></td></tr></table></figure>
-<p>获取当前按下的字符。</p>
-
-      
-    </div>
-    
-      <div class="copyright copyright-container">
-      <div class="article-entry copyright-div">
-        <img src="/blog/css/images/qrcode_oio.jpg" title="同步公众号二维码" class="qr_code-img">
-        <div class="text">
-            所有文章均为原创，如需转载请注明出处<br>
-            敬请扫码关注同步公众号<br>
-            作者：wyin, ywxgod, ywxgood, ywx1818@163.com<br>
-            公众号：ohoiojo<br>
-            来源：http://ywxgod.github.io/blog<br>
-        </div>
-      </div>
-      </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck2b68s6e001b6ovae947z9us" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
 </article>
+  
+  
+    </div></section>
+  
 
 
-<section id="comments">
-    <div id="gitmentContainer"></div>
-    <link rel="stylesheet" href="/blog/css/custom/default.css">
-    <script src="/blog/js/gitment.browser.js"></script>
-    <script>
-      var gitment = new Gitment({
-          id: 'Fri Oct 11 2019 03:32:59 GMT+0800',
-          owner: 'ywxgod', 
-          repo: 'blog',
-          oauth: {
-              client_id: 'cb5071a3a89f450b30c2',
-              client_secret: '69efceee331ec865ef7cce997565a69e5bb0993c',
-          },
-      });
-      gitment.render('gitmentContainer')
-    </script>
-</section>
-
-
-
-
+  <nav id="page-nav">
     
-<nav id="article-nav">
-  
-    <a href="/blog/2019/10/11/use_verdaccio/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          用verdaccio搭建个人用npm私服
-        
-      </div>
-    </a>
-  
-  
-    <a href="/blog/2019/10/11/sublime_text_3_can't_install_packages/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Sublime Text无法安装packages的问题</div>
-    </a>
-  
-</nav>
-
-  
+    <a class="extend prev" rel="prev" href="/blog/archives/page/2/">&laquo; 上一页</a><a class="page-number" href="/blog/archives/">1</a><a class="page-number" href="/blog/archives/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 </section>
         
