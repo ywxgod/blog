@@ -89,6 +89,67 @@
         <section id="main">
   
     
+<article id="post-canvas/canvas_text_position" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/canvas/canvas_text_position/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道canvas中绘制文本主要有两个方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure>
+<p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p>
+<p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p>
+<p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br>
+        
+          </p><p class="article-more-link">
+            <a href="/blog/2019/10/11/canvas/canvas_text_position/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck2b6c8s6001fb8vaoot2h54b" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
 <article id="post-css/css_foundation" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
@@ -134,73 +195,12 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck2b68s6h001f6ovahrtrntg7" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck2b6c8sc001lb8va1l08cqup" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-canvas/canvas_text_position" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/canvas/canvas_text_position/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们知道canvas中绘制文本主要有两个方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure>
-<p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p>
-<p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p>
-<p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br>
-        
-          </p><p class="article-more-link">
-            <a href="/blog/2019/10/11/canvas/canvas_text_position/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck2b68s6k001h6ovahobxpw6l" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
 
     </footer>
   </div>
@@ -256,7 +256,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck2b68s3t000b6ova81djkttb" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck2b6c8pg000eb8valm221a96" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/#comments" class="article-comment-link">留言</a>
       
@@ -315,7 +315,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck2b68s6e001b6ovae947z9us" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck2b6c8s2001bb8va9vg6yju8" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/#comments" class="article-comment-link">留言</a>
       
@@ -374,7 +374,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck2b68s3k00056ovabzpxcvte" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/" data-id="ck2b6c8pa0009b8vab6ki8uod" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can't_install_packages/#comments" class="article-comment-link">留言</a>
       
@@ -432,67 +432,12 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck2b68s3x000f6ova33kyta96" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_promise/" data-id="ck2b6c8pd000ab8vaz53j8l4c" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/use_promise/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Promise/">Promise</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/timeout/">timeout</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-remove_array_duplicates_in_es6" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/remove_array_duplicates_in_es6/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/code/">code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/remove_array_duplicates_in_es6/">ES6数组去重的三种方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ES6数组去重我们可以用以下三种方法：</p>
-<h4 id="1-使用Set"><a href="#1-使用Set" class="headerlink" title="1. 使用Set"></a>1. 使用Set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(array)]); <span class="comment">//[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ]</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-使用filter函数"><a href="#2-使用filter函数" class="headerlink" title="2. 使用filter函数"></a>2. 使用filter函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.filter(<span class="function">(<span class="params">item,index</span>)=&gt;</span>array.findIndex(<span class="function"><span class="params">i</span>=&gt;</span>i==item)==index);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
-<h4 id="3-使用reduce函数"><a href="#3-使用reduce函数" class="headerlink" title="3. 使用reduce函数"></a>3. 使用reduce函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.reduce(<span class="function">(<span class="params">res,item</span>)=&gt;</span>res.includes(item)?res:[...res,item],[]);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck2b68s3m00066ovadc0aak2w" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li></ul>
 
     </footer>
   </div>
@@ -545,12 +490,67 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck2b68s3r000a6ovaptyk0bxe" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/" data-id="ck2b6c8p40005b8va5ztqe27q" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
+<article id="post-remove_array_duplicates_in_es6" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/remove_array_duplicates_in_es6/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/remove_array_duplicates_in_es6/">ES6数组去重的三种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ES6数组去重我们可以用以下三种方法：</p>
+<h4 id="1-使用Set"><a href="#1-使用Set" class="headerlink" title="1. 使用Set"></a>1. 使用Set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(array)]); <span class="comment">//[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-使用filter函数"><a href="#2-使用filter函数" class="headerlink" title="2. 使用filter函数"></a>2. 使用filter函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.filter(<span class="function">(<span class="params">item,index</span>)=&gt;</span>array.findIndex(<span class="function"><span class="params">i</span>=&gt;</span>i==item)==index);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-使用reduce函数"><a href="#3-使用reduce函数" class="headerlink" title="3. 使用reduce函数"></a>3. 使用reduce函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.reduce(<span class="function">(<span class="params">res,item</span>)=&gt;</span>res.includes(item)?res:[...res,item],[]);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck2b6c8p60006b8vaw2d68whs" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li></ul>
 
     </footer>
   </div>
@@ -608,7 +608,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck2b68s3200006ovay3y8q5oq" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck2b6c8ov0001b8vadnr7oh08" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http-server/#comments" class="article-comment-link">留言</a>
       
@@ -674,7 +674,7 @@
     </li></ol></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck2b68s3h00046ovahkz6uoqh" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck2b6c8p20004b8va97eudtq0" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http_cors/#comments" class="article-comment-link">留言</a>
       
@@ -711,7 +711,7 @@
         
           
           <li>
-            <a href="/blog/2019/10/29/jsinfo/object/">001 - Object相关</a>
+            <a href="/blog/2019/10/29/jsinfo/object/">005 - Object相关</a>
           </li>
           
         

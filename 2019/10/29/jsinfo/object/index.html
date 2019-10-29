@@ -5,21 +5,21 @@
   
 
   
-  <title>001 - Object相关 | Web Snippets</title>
+  <title>005 - Object相关 | Web Snippets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="oLJXAOYkTP">
-  <meta name="description" content="003 - JS Objects [TOC]  Object属性操作object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：">
+  <meta name="description" content="Object属性操作object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：">
 <meta name="keywords" content="Object">
 <meta property="og:type" content="article">
-<meta property="og:title" content="001 - Object相关">
+<meta property="og:title" content="005 - Object相关">
 <meta property="og:url" content="https://ywxgod.github.io/blog/2019/10/29/jsinfo/object/index.html">
 <meta property="og:site_name" content="Web Snippets">
-<meta property="og:description" content="003 - JS Objects [TOC]  Object属性操作object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：">
+<meta property="og:description" content="Object属性操作object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-29T01:27:05.083Z">
+<meta property="og:updated_time" content="2019-10-29T01:30:09.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="001 - Object相关">
-<meta name="twitter:description" content="003 - JS Objects [TOC]  Object属性操作object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：">
+<meta name="twitter:title" content="005 - Object相关">
+<meta name="twitter:description" content="Object属性操作object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：">
   
     <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
   
@@ -108,7 +108,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      001 - Object相关
+      005 - Object相关
     </h1>
   
 
@@ -116,9 +116,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>003 - JS Objects</p>
-<p>[TOC]</p>
-<hr>
+        <hr>
 <h2 id="Object属性操作"><a href="#Object属性操作" class="headerlink" title="Object属性操作"></a>Object属性操作</h2><p>object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。<br>实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保留字</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">for</span>:<span class="number">1</span>,<span class="attr">return</span>:<span class="number">2</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj.for, obj.return); <span class="comment">// 1, 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 非字符串属性</span></span><br><span class="line"><span class="keyword">let</span> sym = <span class="built_in">Symbol</span>(<span class="string">'sym'</span>);</span><br><span class="line">obj = &#123;[sym]:<span class="number">1</span>&#125;</span><br><span class="line">alert(obj.sym, obj[sym]); <span class="comment">// undefined, 1 </span></span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// &#123;Symbol(sym): 1&#125; JS会调用Symbol的toString()方法将sym转为字符串,所以并不存在sym属性，而是Symbol(sym)属性</span></span><br></pre></td></tr></table></figure></p>
 <p><code>虽然可以用保留字，但实践中最好还是不要这么做。</code></p>
 <p>删除属性可以用delete，访问某个属性直接用object.prop，也可以用object[‘prop’]，属性<strong>proto</strong>无法被修改。</p>
@@ -204,7 +202,7 @@
       </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/29/jsinfo/object/" data-id="ck2b68s6v001u6ovag1qahigd" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/29/jsinfo/object/" data-id="ck2b6c8t2002qb8va28hfjcyi" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/29/jsinfo/object/#comments" class="article-comment-link">留言</a>
       
@@ -263,7 +261,7 @@
         
           
           <li>
-            <a href="/blog/2019/10/29/jsinfo/object/">001 - Object相关</a>
+            <a href="/blog/2019/10/29/jsinfo/object/">005 - Object相关</a>
           </li>
           
         
