@@ -5,20 +5,21 @@
   
 
   
-  <title>Tag: mongoose | Web Snippets</title>
+  <title>分组网络的时延类型 | Web Snippets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="oLJXAOYkTP">
-  <meta name="description" content="Code，Food，English，History">
-<meta name="keywords" content="Code，Food，English，History">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Web Snippets">
-<meta property="og:url" content="https://ywxgod.github.io/blog/tags/mongoose/index.html">
+  <meta name="description" content="以一个分组从上游路由器通过路由器A向路由器B发送为例，我们在A路由器处会考虑各种时延：处理时延，排队时延，运输时延，传播时延。 当分组从上游节点到达A时，路由器A检查该分组的首部以决定它的适当出口链路，并将该分组导向该链路，这里是通向B的那条。仅当在该链路没有其他分组正在传输并且没有排队时，才能在该条链路上传输该分组。如果该条链路正繁忙或者有其他分组正在排队，那新到达的分组将会加入排队。">
+<meta name="keywords" content="时延">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分组网络的时延类型">
+<meta property="og:url" content="https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/index.html">
 <meta property="og:site_name" content="Web Snippets">
-<meta property="og:description" content="Code，Food，English，History">
+<meta property="og:description" content="以一个分组从上游路由器通过路由器A向路由器B发送为例，我们在A路由器处会考虑各种时延：处理时延，排队时延，运输时延，传播时延。 当分组从上游节点到达A时，路由器A检查该分组的首部以决定它的适当出口链路，并将该分组导向该链路，这里是通向B的那条。仅当在该链路没有其他分组正在传输并且没有排队时，才能在该条链路上传输该分组。如果该条链路正繁忙或者有其他分组正在排队，那新到达的分组将会加入排队。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-11T15:04:11.493Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Web Snippets">
-<meta name="twitter:description" content="Code，Food，English，History">
+<meta name="twitter:title" content="分组网络的时延类型">
+<meta name="twitter:description" content="以一个分组从上游路由器通过路由器A向路由器B发送为例，我们在A路由器处会考虑各种时延：处理时延，排队时延，运输时延，传播时延。 当分组从上游节点到达A时，路由器A检查该分组的首部以决定它的适当出口链路，并将该分组导向该链路，这里是通向B的那条。仅当在该链路没有其他分组正在传输并且没有排队时，才能在该条链路上传输该分组。如果该条链路正繁忙或者有其他分组正在排队，那新到达的分组将会加入排队。">
   
     <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
   
@@ -87,62 +88,108 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-  
+<article id="post-cs/network_delay" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/11/11/cs/network_delay/" class="article-date">
+  <time datetime="2019-11-11T15:02:30.054Z" itemprop="datePublished">2019-11-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/计算机网络/">计算机网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      分组网络的时延类型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
+        <p>以一个分组从上游路由器通过路由器A向路由器B发送为例，我们在A路由器处会考虑各种时延：处理时延，排队时延，运输时延，传播时延。</p>
+<p>当分组从上游节点到达A时，路由器A检查该分组的首部以决定它的适当出口链路，并将该分组导向该链路，这里是通向B的那条。仅当在该链路没有其他分组正在传输并且没有排队时，才能在该条链路上传输该分组。如果该条链路正繁忙或者有其他分组正在排队，那新到达的分组将会加入排队。</p>
+<a id="more"></a>
+<h2 id="处理时延（processing-delays）"><a href="#处理时延（processing-delays）" class="headerlink" title="处理时延（processing delays）"></a>处理时延（processing delays）</h2><p><strong>检查分组首部和决定该分组导向何处所需的时间，它包括：检查比特级别的差错等。</strong>高速路由器的<code>处理时延通常是微秒或更低的数量级</code>。如上面的例子，分组被处理后，路由器将此分组导向通往B路由器链路之前的<strong>队列</strong>。</p>
+<h2 id="排队时延（queuing-delays）"><a href="#排队时延（queuing-delays）" class="headerlink" title="排队时延（queuing delays）"></a>排队时延（queuing delays）</h2><p>分组到达某出口链路队列后，如果该链路繁忙或者已经有分组在该链路上传输，它需要经受排队时延，就是说排队时延是不固定的，有时有有时无。排队时延的长短取决于先期到达的正在排队等待向链路传输的分组数量。如果该队列为空，排队时延为0；如果链路流量很大，排队时延或许很长。<code>实际的排队时延是毫秒到微秒的量级</code>。</p>
+<h2 id="运输时延（transmission-delays）"><a href="#运输时延（transmission-delays）" class="headerlink" title="运输时延（transmission delays）"></a>运输时延（transmission delays）</h2><p>路由器推出分组所需要的时间，它是分组长度和链路传输速度的函数，它与路由器之间的距离无关。例如，对于一条10Mbps的以太网链路，速率是10Mbps，分组长度为L，则运输时延为L/10，这就是将所有分组的比特推向链路所需要的时间。<code>实际的运输时延通常在毫秒到微秒量级</code>。</p>
+<h2 id="传播时延（propagation-delays）"><a href="#传播时延（propagation-delays）" class="headerlink" title="传播时延（propagation delays）"></a>传播时延（propagation delays）</h2><p>分组两个路由之间传播的时间称为传播时延，为两个路由器之间的距离除以传播速率。<code>广域网中传播时延为毫秒量级</code>。</p>
+<p>以上四种时延，除了排队时延不固定，其他时延都是固定存在的。</p>
+<p>假设d~proc~，d~queue~，d~trans~，d~prop~分别表示处理时延、排队时延、传输时延、传播时延，</p>
+<p>则节点的总时延为：<br>$$<br><strong>d~nodal~ = d~proc~ + d~queue~ + d~trans~ + d~prop~</strong><br>$$</p>
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2019" class="archive-year">2019</a>
+    </div>
+    
+      <div class="copyright copyright-container">
+      <div class="article-entry copyright-div">
+        <img src="/blog/css/images/qrcode_oio.jpg" title="同步公众号二维码" class="qr_code-img">
+        <div class="text">
+            所有文章均为原创，如需转载请注明出处<br>
+            敬请扫码关注同步公众号<br>
+            作者：wyin, ywxgod, ywxgood, ywx1818@163.com<br>
+            公众号：ohoiojo<br>
+            来源：http://ywxgod.github.io/blog<br>
         </div>
-        <div class="archives">
+      </div>
+      </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/" data-id="ck2uk5zhj001mycval7etpni6" class="article-share-link">Share</a>
       
-<a href="/blog/2019/10/14/mongoose/drop_collections/" class="archive-article-date">
-  <time datetime="2019-10-14T15:32:49.969Z" itemprop="datePublished">10月 14</time>
-</a>
-
+        <a href="https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/#comments" class="article-comment-link">留言</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2019/10/14/mongoose/drop_collections/">mongoose如何清除collections</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/时延/">时延</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
 </article>
-  
+
+
+<section id="comments">
+    <div id="gitmentContainer"></div>
+    <link rel="stylesheet" href="/blog/css/custom/default.css">
+    <script src="/blog/js/gitment.browser.js"></script>
+    <script>
+      var gitment = new Gitment({
+          id: 'Mon Nov 11 2019 23:02:30 GMT+0800',
+          owner: 'ywxgod', 
+          repo: 'blog',
+          oauth: {
+              client_id: 'cb5071a3a89f450b30c2',
+              client_secret: '69efceee331ec865ef7cce997565a69e5bb0993c',
+          },
+      });
+      gitment.render('gitmentContainer')
+    </script>
+</section>
+
+
+
+
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/blog/2019/10/11/mongoose/mongoose_issues/" class="archive-article-date">
-  <time datetime="2019-10-10T19:32:59.543Z" itemprop="datePublished">10月 11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2019/11/09/jsinfo/virtual_dom/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">从零开始学虚拟DOM</div>
+    </a>
+  
+</nav>
 
-      
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2019/10/11/mongoose/mongoose_issues/">mongoose链接数据库时的两个警告处理</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
 
 </section>
         

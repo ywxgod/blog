@@ -89,6 +89,61 @@
         <section id="main">
   
     
+<article id="post-remove_array_duplicates_in_es6" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/remove_array_duplicates_in_es6/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.481Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/code/">code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/remove_array_duplicates_in_es6/">ES6数组去重的三种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ES6数组去重我们可以用以下三种方法：</p>
+<h4 id="1-使用Set"><a href="#1-使用Set" class="headerlink" title="1. 使用Set"></a>1. 使用Set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(array)]); <span class="comment">//[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-使用filter函数"><a href="#2-使用filter函数" class="headerlink" title="2. 使用filter函数"></a>2. 使用filter函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.filter(<span class="function">(<span class="params">item,index</span>)=&gt;</span>array.findIndex(<span class="function"><span class="params">i</span>=&gt;</span>i==item)==index);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-使用reduce函数"><a href="#3-使用reduce函数" class="headerlink" title="3. 使用reduce函数"></a>3. 使用reduce函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.reduce(<span class="function">(<span class="params">res,item</span>)=&gt;</span>res.includes(item)?res:[...res,item],[]);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/" data-id="ck2uk5ze60006ycva29yciw63" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Array/">Array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
 <article id="post-http-server" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
@@ -133,7 +188,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck2qjgc0e0001j0va6vq9rzh8" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http-server/" data-id="ck2uk5zdv0001ycvapq5rd3sg" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http-server/#comments" class="article-comment-link">留言</a>
       
@@ -199,7 +254,7 @@
     </li></ol></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck2qjgc0l0004j0vaxbvxdne1" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/http_cors/" data-id="ck2uk5ze20004ycva9zptslbf" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/http_cors/#comments" class="article-comment-link">留言</a>
       
@@ -260,7 +315,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck2qjgc060000j0vakk5d8hu3" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/" data-id="ck2uk5zdn0000ycvasmqmtkka" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/elementui_load_demand/#comments" class="article-comment-link">留言</a>
       
@@ -297,6 +352,12 @@
         
           
           <li>
+            <a href="/blog/2019/11/11/cs/network_delay/">分组网络的时延类型</a>
+          </li>
+          
+        
+          
+          <li>
             <a href="/blog/2019/11/09/jsinfo/virtual_dom/">从零开始学虚拟DOM</a>
           </li>
           
@@ -319,12 +380,6 @@
           </li>
           
         
-          
-          <li>
-            <a href="/blog/2019/10/18/jsinfo/symbols/">004 - Symbols介绍</a>
-          </li>
-          
-        
       </ul>
     </div>
   </div>
@@ -334,7 +389,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -344,7 +399,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Object/">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vuejs/">vuejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/虚拟DOM/">虚拟DOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Object/">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vuejs/">vuejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/时延/">时延</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/虚拟DOM/">虚拟DOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -354,7 +409,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 15px;">JS操作符</a> <a href="/blog/tags/Object/" style="font-size: 10px;">Object</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 15px;">code</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 15px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/blog/tags/vuejs/" style="font-size: 10px;">vuejs</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/虚拟DOM/" style="font-size: 10px;">虚拟DOM</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 15px;">JS操作符</a> <a href="/blog/tags/Object/" style="font-size: 10px;">Object</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 20px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 15px;">code</a> <a href="/blog/tags/css/" style="font-size: 15px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 15px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/blog/tags/vuejs/" style="font-size: 10px;">vuejs</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/时延/" style="font-size: 10px;">时延</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/虚拟DOM/" style="font-size: 10px;">虚拟DOM</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
     </div>
   </div>
 
@@ -363,7 +418,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">十一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">21</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">21</span></li></ul>
     </div>
   </div>
 

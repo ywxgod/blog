@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
-  <updated>2019-11-08T19:33:42.435Z</updated>
+  <updated>2019-11-11T15:04:11.493Z</updated>
   <id>https://ywxgod.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分组网络的时延类型</title>
+    <link href="https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/"/>
+    <id>https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/</id>
+    <published>2019-11-11T15:02:30.054Z</published>
+    <updated>2019-11-11T15:04:11.493Z</updated>
+    
+    <content type="html"><![CDATA[<p>以一个分组从上游路由器通过路由器A向路由器B发送为例，我们在A路由器处会考虑各种时延：处理时延，排队时延，运输时延，传播时延。</p><p>当分组从上游节点到达A时，路由器A检查该分组的首部以决定它的适当出口链路，并将该分组导向该链路，这里是通向B的那条。仅当在该链路没有其他分组正在传输并且没有排队时，才能在该条链路上传输该分组。如果该条链路正繁忙或者有其他分组正在排队，那新到达的分组将会加入排队。</p><a id="more"></a><h2 id="处理时延（processing-delays）"><a href="#处理时延（processing-delays）" class="headerlink" title="处理时延（processing delays）"></a>处理时延（processing delays）</h2><p><strong>检查分组首部和决定该分组导向何处所需的时间，它包括：检查比特级别的差错等。</strong>高速路由器的<code>处理时延通常是微秒或更低的数量级</code>。如上面的例子，分组被处理后，路由器将此分组导向通往B路由器链路之前的<strong>队列</strong>。</p><h2 id="排队时延（queuing-delays）"><a href="#排队时延（queuing-delays）" class="headerlink" title="排队时延（queuing delays）"></a>排队时延（queuing delays）</h2><p>分组到达某出口链路队列后，如果该链路繁忙或者已经有分组在该链路上传输，它需要经受排队时延，就是说排队时延是不固定的，有时有有时无。排队时延的长短取决于先期到达的正在排队等待向链路传输的分组数量。如果该队列为空，排队时延为0；如果链路流量很大，排队时延或许很长。<code>实际的排队时延是毫秒到微秒的量级</code>。</p><h2 id="运输时延（transmission-delays）"><a href="#运输时延（transmission-delays）" class="headerlink" title="运输时延（transmission delays）"></a>运输时延（transmission delays）</h2><p>路由器推出分组所需要的时间，它是分组长度和链路传输速度的函数，它与路由器之间的距离无关。例如，对于一条10Mbps的以太网链路，速率是10Mbps，分组长度为L，则运输时延为L/10，这就是将所有分组的比特推向链路所需要的时间。<code>实际的运输时延通常在毫秒到微秒量级</code>。</p><h2 id="传播时延（propagation-delays）"><a href="#传播时延（propagation-delays）" class="headerlink" title="传播时延（propagation delays）"></a>传播时延（propagation delays）</h2><p>分组两个路由之间传播的时间称为传播时延，为两个路由器之间的距离除以传播速率。<code>广域网中传播时延为毫秒量级</code>。</p><p>以上四种时延，除了排队时延不固定，其他时延都是固定存在的。</p><p>假设d~proc~，d~queue~，d~trans~，d~prop~分别表示处理时延、排队时延、传输时延、传播时延，</p><p>则节点的总时延为：<br>$$<br><strong>d~nodal~ = d~proc~ + d~queue~ + d~trans~ + d~prop~</strong><br>$$</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以一个分组从上游路由器通过路由器A向路由器B发送为例，我们在A路由器处会考虑各种时延：处理时延，排队时延，运输时延，传播时延。&lt;/p&gt;
+&lt;p&gt;当分组从上游节点到达A时，路由器A检查该分组的首部以决定它的适当出口链路，并将该分组导向该链路，这里是通向B的那条。仅当在该链路没有其他分组正在传输并且没有排队时，才能在该条链路上传输该分组。如果该条链路正繁忙或者有其他分组正在排队，那新到达的分组将会加入排队。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机网络" scheme="https://ywxgod.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="时延" scheme="https://ywxgod.github.io/blog/tags/%E6%97%B6%E5%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>从零开始学虚拟DOM</title>
@@ -308,6 +331,32 @@
   </entry>
   
   <entry>
+    <title>Canvas中文本的定位</title>
+    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
+    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
+    <published>2019-10-10T19:32:59.528Z</published>
+    <updated>2019-08-19T15:44:23.727Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
+&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
+&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
+    
+    
+      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Canvas大小的设定</title>
     <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/"/>
     <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/</id>
@@ -326,32 +375,6 @@
 &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.canvas&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;600px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;300px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;canvas&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;300&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;150&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;canvas&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;两种方法的区别：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
-    
-    
-      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canvas中文本的定位</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
-    <published>2019-10-10T19:32:59.528Z</published>
-    <updated>2019-08-19T15:44:23.727Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
-&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
-&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
     
     </summary>
     
@@ -442,6 +465,30 @@
   </entry>
   
   <entry>
+    <title>Sublime Text无法安装packages的问题</title>
+    <link href="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can&#39;t_install_packages/"/>
+    <id>https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can&#39;t_install_packages/</id>
+    <published>2019-10-10T19:32:59.496Z</published>
+    <updated>2019-08-19T15:44:23.734Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近发现sublime text安装packages的时候不行了，老是弹出一个对话框，说没有可用的包。。。</p><p><img src="/blog/css/images/sublime_text_3_can&#39;t_install_packages_001.png" alt="没有可用的包安装"></p><p>搜了一下都没解决，后来从控制面板看到以下信息：<br><a id="more"></a></p><p><img src="/blog/css/images/sublime_text_3_can&#39;t_install_packages_002.png" alt="链接错误"></p><p>原来是 <a href="https://packagecontrol.io/channel_v3.json" target="_blank" rel="noopener">https://packagecontrol.io/channel_v3.json</a> 连不上了，被墙了？。。。</p><p>解决方法：<br>ctrl+shift+p 打开命令面板，输入 Package setttings，找到”Preferences: Package Control Settings - User”<br>加入以下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"channels"</span>:[</span><br><span class="line">    <span class="string">"http://cst.stu.126.net/u/json/cms/channel_v3.json"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><p>将原来的地址改为国内的就行了。</p><p>不禁感叹，做一个开发挺难。<br>npmjs国内慢，大家都做镜像，更有甚者还要设置代理。。。。各种问题。。。<br>不过还好，我们总有解决问题的办法。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近发现sublime text安装packages的时候不行了，老是弹出一个对话框，说没有可用的包。。。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/css/images/sublime_text_3_can&amp;#39;t_install_packages_001.png&quot; alt=&quot;没有可用的包安装&quot;&gt;&lt;/p&gt;
+&lt;p&gt;搜了一下都没解决，后来从控制面板看到以下信息：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="code" scheme="https://ywxgod.github.io/blog/categories/code/"/>
+    
+    
+      <category term="sublime text" scheme="https://ywxgod.github.io/blog/tags/sublime-text/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Promise与请求超时</title>
     <link href="https://ywxgod.github.io/blog/2019/10/11/use_promise/"/>
     <id>https://ywxgod.github.io/blog/2019/10/11/use_promise/</id>
@@ -467,30 +514,6 @@
   </entry>
   
   <entry>
-    <title>Sublime Text无法安装packages的问题</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can&#39;t_install_packages/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can&#39;t_install_packages/</id>
-    <published>2019-10-10T19:32:59.496Z</published>
-    <updated>2019-08-19T15:44:23.734Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近发现sublime text安装packages的时候不行了，老是弹出一个对话框，说没有可用的包。。。</p><p><img src="/blog/css/images/sublime_text_3_can&#39;t_install_packages_001.png" alt="没有可用的包安装"></p><p>搜了一下都没解决，后来从控制面板看到以下信息：<br><a id="more"></a></p><p><img src="/blog/css/images/sublime_text_3_can&#39;t_install_packages_002.png" alt="链接错误"></p><p>原来是 <a href="https://packagecontrol.io/channel_v3.json" target="_blank" rel="noopener">https://packagecontrol.io/channel_v3.json</a> 连不上了，被墙了？。。。</p><p>解决方法：<br>ctrl+shift+p 打开命令面板，输入 Package setttings，找到”Preferences: Package Control Settings - User”<br>加入以下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"channels"</span>:[</span><br><span class="line">    <span class="string">"http://cst.stu.126.net/u/json/cms/channel_v3.json"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><p>将原来的地址改为国内的就行了。</p><p>不禁感叹，做一个开发挺难。<br>npmjs国内慢，大家都做镜像，更有甚者还要设置代理。。。。各种问题。。。<br>不过还好，我们总有解决问题的办法。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近发现sublime text安装packages的时候不行了，老是弹出一个对话框，说没有可用的包。。。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/css/images/sublime_text_3_can&amp;#39;t_install_packages_001.png&quot; alt=&quot;没有可用的包安装&quot;&gt;&lt;/p&gt;
-&lt;p&gt;搜了一下都没解决，后来从控制面板看到以下信息：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="code" scheme="https://ywxgod.github.io/blog/categories/code/"/>
-    
-    
-      <category term="sublime text" scheme="https://ywxgod.github.io/blog/tags/sublime-text/"/>
-    
-  </entry>
-  
-  <entry>
     <title>用webpack打包的常见问题</title>
     <link href="https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/"/>
     <id>https://ywxgod.github.io/blog/2019/10/11/issues_for_webpack/</id>
@@ -510,34 +533,6 @@
     
     
       <category term="webpack" scheme="https://ywxgod.github.io/blog/tags/webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6数组去重的三种方法</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/remove_array_duplicates_in_es6/</id>
-    <published>2019-10-10T19:32:59.481Z</published>
-    <updated>2019-08-19T15:44:23.733Z</updated>
-    
-    <content type="html"><![CDATA[<p>ES6数组去重我们可以用以下三种方法：</p><h4 id="1-使用Set"><a href="#1-使用Set" class="headerlink" title="1. 使用Set"></a>1. 使用Set</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="built_in">console</span>.log([...new <span class="built_in">Set</span>(array)]); <span class="comment">//[ 1, 2, 3, 4, 6, 8, 9, 5, 7 ]</span></span><br></pre></td></tr></table></figure><h4 id="2-使用filter函数"><a href="#2-使用filter函数" class="headerlink" title="2. 使用filter函数"></a>2. 使用filter函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.filter(<span class="function">(<span class="params">item,index</span>)=&gt;</span>array.findIndex(<span class="function"><span class="params">i</span>=&gt;</span>i==item)==index);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure><h4 id="3-使用reduce函数"><a href="#3-使用reduce函数" class="headerlink" title="3. 使用reduce函数"></a>3. 使用reduce函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</span><br><span class="line"><span class="keyword">let</span> result = array.reduce(<span class="function">(<span class="params">res,item</span>)=&gt;</span>res.includes(item)?res:[...res,item],[]);</span><br><span class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 3, 4, 6, 8, 9, 5, 7]</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;ES6数组去重我们可以用以下三种方法：&lt;/p&gt;
-&lt;h4 id=&quot;1-使用Set&quot;&gt;&lt;a href=&quot;#1-使用Set&quot; class=&quot;headerlink&quot; title=&quot;1. 使用Set&quot;&gt;&lt;/a&gt;1. 使用Set&lt;/h4&gt;&lt;figure class=&quot;highlight
-      
-    
-    </summary>
-    
-      <category term="code" scheme="https://ywxgod.github.io/blog/categories/code/"/>
-    
-    
-      <category term="ES6" scheme="https://ywxgod.github.io/blog/tags/ES6/"/>
-    
-      <category term="Array" scheme="https://ywxgod.github.io/blog/tags/Array/"/>
     
   </entry>
   
