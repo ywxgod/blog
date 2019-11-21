@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
-  <updated>2019-11-21T16:19:24.291Z</updated>
+  <updated>2019-11-21T16:21:24.277Z</updated>
   <id>https://ywxgod.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>背景图定位</title>
+    <link href="https://ywxgod.github.io/blog/2019/11/22/css/bg_position/"/>
+    <id>https://ywxgod.github.io/blog/2019/11/22/css/bg_position/</id>
+    <published>2019-11-21T16:20:30.042Z</published>
+    <updated>2019-11-21T16:21:24.277Z</updated>
+    
+    <content type="html"><![CDATA[<p>定位背景图的三种方法：</p><h3 id="background-position"><a href="#background-position" class="headerlink" title="background-position"></a>background-position</h3><p>background-position可以直接定位背景图到指定的位置，如：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 距离容器右边距20px， 下边距30px */</span></span><br><span class="line"><span class="selector-tag">background-position</span>: <span class="selector-tag">right</span> 20<span class="selector-tag">px</span> <span class="selector-tag">bottom</span> 30<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure><p>这种方法是css3新增语法，在不支持的浏览器上需要做回退处理，可以添加如下声明：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 只能指定容器的 */</span></span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">url</span>(<span class="selector-tag">test</span><span class="selector-class">.png</span>) <span class="selector-tag">no-repeat</span> <span class="selector-tag">bottom</span> <span class="selector-tag">right</span> <span class="selector-tag">red</span>;</span><br><span class="line"><span class="selector-tag">background-position</span>: <span class="selector-tag">right</span> 20<span class="selector-tag">px</span> <span class="selector-tag">bottom</span> 30<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure><h3 id="background-origin"><a href="#background-origin" class="headerlink" title="background-origin"></a>background-origin</h3><p>background-origin可以指定背景图相对于容器的区域，一般有三个值：content-box，padding-box，border-box，默认值是padding-box，所以默认情况下背景图不会覆盖容器的边框</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 设置padding值为10px */</span></span><br><span class="line"><span class="selector-tag">padding</span>: 10<span class="selector-tag">px</span>;</span><br><span class="line"><span class="comment">/** 将背景图设置到右下角 */</span></span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">url</span>(<span class="selector-tag">test</span><span class="selector-class">.png</span>) <span class="selector-tag">no-repeat</span> <span class="selector-tag">bottom</span> <span class="selector-tag">right</span> <span class="selector-tag">red</span>; </span><br><span class="line"><span class="comment">/** 设置背景图区域为content-box，因为padding为10px，所以背景图会相对于右下角各10px */</span></span><br><span class="line"><span class="selector-tag">background-origin</span>: <span class="selector-tag">content-box</span>;</span><br></pre></td></tr></table></figure><h3 id="calc"><a href="#calc" class="headerlink" title="calc"></a>calc</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">url</span>(<span class="selector-tag">test</span><span class="selector-class">.png</span>) <span class="selector-tag">no-repeat</span>;</span><br><span class="line"><span class="selector-tag">background-position</span>: <span class="selector-tag">calc</span>(100% <span class="selector-tag">-</span> 10<span class="selector-tag">px</span>) <span class="selector-tag">calc</span>(100% <span class="selector-tag">-</span> 10<span class="selector-tag">px</span>);</span><br></pre></td></tr></table></figure><p>100% - xpx : x表示距离边界的距离。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;定位背景图的三种方法：&lt;/p&gt;
+&lt;h3 id=&quot;background-position&quot;&gt;&lt;a href=&quot;#background-position&quot; class=&quot;headerlink&quot; title=&quot;background-position&quot;&gt;&lt;/a&gt;background
+      
+    
+    </summary>
+    
+      <category term="css" scheme="https://ywxgod.github.io/blog/categories/css/"/>
+    
+    
+      <category term="code" scheme="https://ywxgod.github.io/blog/tags/code/"/>
+    
+  </entry>
   
   <entry>
     <title>用open函数读取文本文件内容</title>
@@ -511,30 +537,6 @@
     
     
       <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Sublime Text无法安装packages的问题</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can&#39;t_install_packages/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/sublime_text_3_can&#39;t_install_packages/</id>
-    <published>2019-10-10T19:32:59.496Z</published>
-    <updated>2019-08-19T15:44:23.734Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近发现sublime text安装packages的时候不行了，老是弹出一个对话框，说没有可用的包。。。</p><p><img src="/blog/css/images/sublime_text_3_can&#39;t_install_packages_001.png" alt="没有可用的包安装"></p><p>搜了一下都没解决，后来从控制面板看到以下信息：<br><a id="more"></a></p><p><img src="/blog/css/images/sublime_text_3_can&#39;t_install_packages_002.png" alt="链接错误"></p><p>原来是 <a href="https://packagecontrol.io/channel_v3.json" target="_blank" rel="noopener">https://packagecontrol.io/channel_v3.json</a> 连不上了，被墙了？。。。</p><p>解决方法：<br>ctrl+shift+p 打开命令面板，输入 Package setttings，找到”Preferences: Package Control Settings - User”<br>加入以下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"channels"</span>:[</span><br><span class="line">    <span class="string">"http://cst.stu.126.net/u/json/cms/channel_v3.json"</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><p>将原来的地址改为国内的就行了。</p><p>不禁感叹，做一个开发挺难。<br>npmjs国内慢，大家都做镜像，更有甚者还要设置代理。。。。各种问题。。。<br>不过还好，我们总有解决问题的办法。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近发现sublime text安装packages的时候不行了，老是弹出一个对话框，说没有可用的包。。。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/blog/css/images/sublime_text_3_can&amp;#39;t_install_packages_001.png&quot; alt=&quot;没有可用的包安装&quot;&gt;&lt;/p&gt;
-&lt;p&gt;搜了一下都没解决，后来从控制面板看到以下信息：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="code" scheme="https://ywxgod.github.io/blog/categories/code/"/>
-    
-    
-      <category term="sublime text" scheme="https://ywxgod.github.io/blog/tags/sublime-text/"/>
     
   </entry>
   
