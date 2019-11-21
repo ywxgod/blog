@@ -8,18 +8,18 @@
   <title>用open函数读取文本文件内容 | Web Snippets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="oLJXAOYkTP">
-  <meta name="description" content="用open函数读取文本文件内容用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时">
+  <meta name="description" content="用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时使用的编码不同导致的。解决上面">
 <meta name="keywords" content="code">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用open函数读取文本文件内容">
 <meta property="og:url" content="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/index.html">
 <meta property="og:site_name" content="Web Snippets">
-<meta property="og:description" content="用open函数读取文本文件内容用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时">
+<meta property="og:description" content="用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时使用的编码不同导致的。解决上面">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-21T16:15:55.292Z">
+<meta property="og:updated_time" content="2019-11-21T16:19:24.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用open函数读取文本文件内容">
-<meta name="twitter:description" content="用open函数读取文本文件内容用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时">
+<meta name="twitter:description" content="用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时使用的编码不同导致的。解决上面">
   
     <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
   
@@ -116,7 +116,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="用open函数读取文本文件内容"><a href="#用open函数读取文本文件内容" class="headerlink" title="用open函数读取文本文件内容"></a>用open函数读取文本文件内容</h2><p>用<code>open(‘text.txt’, ‘r’).read()</code>读取文本文件时，经常会出现解码错误：</p>
+        <p>用<code>open(‘text.txt’, ‘r’).read()</code>读取文本文件时，经常会出现解码错误：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeDecodeError: <span class="string">'gbk'</span> codec can<span class="string">'t decode byte 0x99 in position 540: illegal multibyte sequence</span></span><br></pre></td></tr></table></figure>
 <p>这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时使用的编码不同导致的。解决上面的错误，我们可以加一个模式：<code>b</code>，这样告诉python读取文件的原始数据而不进行编码，如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file = open(filename, <span class="string">'rb'</span>)</span><br></pre></td></tr></table></figure>
@@ -143,7 +143,7 @@
       </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/" data-id="ck38x5tnq0023xwvai5jcpr19" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/" data-id="ck38x8c6b002l2svaeudmjeoc" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/#comments" class="article-comment-link">留言</a>
       
