@@ -5,20 +5,21 @@
   
 
   
-  <title>Tag: 跨域 | Web Snippets</title>
+  <title>用open函数读取文本文件内容 | Web Snippets</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="baidu-site-verification" content="oLJXAOYkTP">
-  <meta name="description" content="Code，Food，English，History">
-<meta name="keywords" content="Code，Food，English，History">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Web Snippets">
-<meta property="og:url" content="https://ywxgod.github.io/blog/tags/跨域/index.html">
+  <meta name="description" content="用open函数读取文本文件内容用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时">
+<meta name="keywords" content="code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用open函数读取文本文件内容">
+<meta property="og:url" content="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/index.html">
 <meta property="og:site_name" content="Web Snippets">
-<meta property="og:description" content="Code，Food，English，History">
+<meta property="og:description" content="用open函数读取文本文件内容用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-21T16:15:55.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Web Snippets">
-<meta name="twitter:description" content="Code，Food，English，History">
+<meta name="twitter:title" content="用open函数读取文本文件内容">
+<meta name="twitter:description" content="用open函数读取文本文件内容用open(‘text.txt’, ‘r’).read()读取文本文件时，经常会出现解码错误： 1UnicodeDecodeError: &apos;gbk&apos; codec can&apos;t decode byte 0x99 in position 540: illegal multibyte sequence 这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时">
   
     <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
   
@@ -87,41 +88,107 @@
 </header>
       <div class="outer">
         <section id="main">
-  
-  
+<article id="post-python/read_txt_file" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/blog/2019/10/11/http_cors/" class="archive-article-date">
-  <time datetime="2019-10-10T19:32:59.465Z" itemprop="datePublished">10月 11</time>
+<a href="/blog/2019/11/22/python/read_txt_file/" class="article-date">
+  <time datetime="2019-11-21T16:15:11.195Z" itemprop="datePublished">2019-11-22</time>
 </a>
 
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2019/10/11/http_cors/">HTTP访问控制CORS</a>
+    <h1 class="article-title" itemprop="name">
+      用open函数读取文本文件内容
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="用open函数读取文本文件内容"><a href="#用open函数读取文本文件内容" class="headerlink" title="用open函数读取文本文件内容"></a>用open函数读取文本文件内容</h2><p>用<code>open(‘text.txt’, ‘r’).read()</code>读取文本文件时，经常会出现解码错误：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeDecodeError: <span class="string">'gbk'</span> codec can<span class="string">'t decode byte 0x99 in position 540: illegal multibyte sequence</span></span><br></pre></td></tr></table></figure>
+<p>这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时使用的编码不同导致的。解决上面的错误，我们可以加一个模式：<code>b</code>，这样告诉python读取文件的原始数据而不进行编码，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file = open(filename, <span class="string">'rb'</span>)</span><br></pre></td></tr></table></figure>
+<p>然后调用read方法读取文件内容，此时read方法返回的内容为二进制数据，并非字符串</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text = file.read()</span><br></pre></td></tr></table></figure>
+<p>接下来可以根据需要将二进制转换为我们存储文件时的编码，如utf-8：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text = text.decode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<p>这样text保存的即为字符串的文本内容。</p>
 
+      
+    </div>
+    
+      <div class="copyright copyright-container">
+      <div class="article-entry copyright-div">
+        <img src="/blog/css/images/qrcode_oio.jpg" title="同步公众号二维码" class="qr_code-img">
+        <div class="text">
+            所有文章均为原创，如需转载请注明出处<br>
+            敬请扫码关注同步公众号<br>
+            作者：wyin, ywxgod, ywxgood, ywx1818@163.com<br>
+            公众号：ohoiojo<br>
+            来源：http://ywxgod.github.io/blog<br>
+        </div>
+      </div>
+      </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/" data-id="ck38x5tnq0023xwvai5jcpr19" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/code/">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+<section id="comments">
+    <div id="gitmentContainer"></div>
+    <link rel="stylesheet" href="/blog/css/custom/default.css">
+    <script src="/blog/js/gitment.browser.js"></script>
+    <script>
+      var gitment = new Gitment({
+          id: 'Fri Nov 22 2019 00:15:11 GMT+0800',
+          owner: 'ywxgod', 
+          repo: 'blog',
+          oauth: {
+              client_id: 'cb5071a3a89f450b30c2',
+              client_secret: '69efceee331ec865ef7cce997565a69e5bb0993c',
+          },
+      });
+      gitment.render('gitmentContainer')
+    </script>
+</section>
+
+
+
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2019/11/12/vuejs/rerender_in_vuejs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">如何强制vue组件重新渲染</div>
+    </a>
+  
+</nav>
+
+  
 
 </section>
         

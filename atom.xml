@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
-  <updated>2019-11-11T17:21:53.359Z</updated>
+  <updated>2019-11-21T16:15:55.292Z</updated>
   <id>https://ywxgod.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用open函数读取文本文件内容</title>
+    <link href="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/"/>
+    <id>https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/</id>
+    <published>2019-11-21T16:15:11.195Z</published>
+    <updated>2019-11-21T16:15:55.292Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="用open函数读取文本文件内容"><a href="#用open函数读取文本文件内容" class="headerlink" title="用open函数读取文本文件内容"></a>用open函数读取文本文件内容</h2><p>用<code>open(‘text.txt’, ‘r’).read()</code>读取文本文件时，经常会出现解码错误：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UnicodeDecodeError: <span class="string">'gbk'</span> codec can<span class="string">'t decode byte 0x99 in position 540: illegal multibyte sequence</span></span><br></pre></td></tr></table></figure><p>这是因为我们大部分IDE创建文件文本文件时用的编码跟python读取文件时使用的编码不同导致的。解决上面的错误，我们可以加一个模式：<code>b</code>，这样告诉python读取文件的原始数据而不进行编码，如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file = open(filename, <span class="string">'rb'</span>)</span><br></pre></td></tr></table></figure><p>然后调用read方法读取文件内容，此时read方法返回的内容为二进制数据，并非字符串</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text = file.read()</span><br></pre></td></tr></table></figure><p>接下来可以根据需要将二进制转换为我们存储文件时的编码，如utf-8：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text = text.decode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure><p>这样text保存的即为字符串的文本内容。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;用open函数读取文本文件内容&quot;&gt;&lt;a href=&quot;#用open函数读取文本文件内容&quot; class=&quot;headerlink&quot; title=&quot;用open函数读取文本文件内容&quot;&gt;&lt;/a&gt;用open函数读取文本文件内容&lt;/h2&gt;&lt;p&gt;用&lt;code&gt;open(‘text.
+      
+    
+    </summary>
+    
+      <category term="python" scheme="https://ywxgod.github.io/blog/categories/python/"/>
+    
+    
+      <category term="code" scheme="https://ywxgod.github.io/blog/tags/code/"/>
+    
+  </entry>
   
   <entry>
     <title>如何强制vue组件重新渲染</title>
@@ -355,6 +380,32 @@
   </entry>
   
   <entry>
+    <title>Canvas中文本的定位</title>
+    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
+    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
+    <published>2019-10-10T19:32:59.528Z</published>
+    <updated>2019-08-19T15:44:23.727Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
+&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
+&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
+    
+    
+      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Canvas大小的设定</title>
     <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/"/>
     <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/</id>
@@ -409,32 +460,6 @@
     
     
       <category term="css" scheme="https://ywxgod.github.io/blog/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canvas中文本的定位</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
-    <published>2019-10-10T19:32:59.528Z</published>
-    <updated>2019-08-19T15:44:23.727Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
-&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
-&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
-    
-    
-      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
     
   </entry>
   
@@ -509,31 +534,6 @@
     
     
       <category term="sublime text" scheme="https://ywxgod.github.io/blog/tags/sublime-text/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Promise与请求超时</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/use_promise/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/use_promise/</id>
-    <published>2019-10-10T19:32:59.496Z</published>
-    <updated>2019-08-19T15:44:23.735Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近项目有个需求，需要对所有ajax请求增加超时处理，以前是没有的。<br>不管是axios还是原始的XMLHttpRequest都提供了超时设置，正常来说我们可以先设置一个超时时间，然后再在错误事件中区别出timeout错误，这样就可以统一处理，不过前提是你的请求应该是统一经过一个地方发出，不然修改的地方就多了。</p><p>上面的方法可以达到目的，只是不是很好，下面的有两种更妙的方法：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms,promise</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        promise.then(resolve).catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;reject(err)&#125;);</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            reject(<span class="keyword">new</span> TimeoutError(<span class="string">`超时：超过<span class="subst">$&#123;ms&#125;</span>毫秒`</span>))</span><br><span class="line">        &#125;,ms);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">调用：</span><br><span class="line"><span class="keyword">let</span> promiseRequest = ajax.getJson(<span class="string">'......'</span>);</span><br><span class="line">timeout(<span class="number">5000</span>, promiseRequest)</span><br><span class="line">    .then(success)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err <span class="keyword">instanceof</span> TimeoutError)&#123; </span><br><span class="line">            <span class="comment">//timeout </span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//other errors</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure></p><p>我们只需要将原来发请求的函数再封装一下.封装函数(高阶函数?).</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//延时函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delay</span>(<span class="params">ms</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">        setTimeout(resolve,ms);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms,promise</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.race([</span><br><span class="line">        delay(ms).then(<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">throw</span> <span class="keyword">new</span> TimeoutError(<span class="string">'....'</span>)),</span><br><span class="line">        promise</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Promise.race的原理是：提供给它并行处理的promise中，只要有一个状态发生改变，即返回此promise状态。<br>第二种方法利用Promise.race来处理正常promise和一个延时promise，调用方法跟第一种一样。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近项目有个需求，需要对所有ajax请求增加超时处理，以前是没有的。&lt;br&gt;不管是axios还是原始的XMLHttpRequest都提供了超时设置，正常来说我们可以先设置一个超时时间，然后再在错误事件中区别出timeout错误，这样就可以统一处理，不过前提是你的请求应该是统一经过一个地方发出，不然修改的地方就多了。&lt;/p&gt;
-&lt;p&gt;上面的方法可以达到目的，只是不是很好，下面的有两种更妙的方法：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="code" scheme="https://ywxgod.github.io/blog/categories/code/"/>
-    
-    
-      <category term="Promise" scheme="https://ywxgod.github.io/blog/tags/Promise/"/>
-    
-      <category term="timeout" scheme="https://ywxgod.github.io/blog/tags/timeout/"/>
     
   </entry>
   
