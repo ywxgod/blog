@@ -89,6 +89,67 @@
         <section id="main">
   
     
+<article id="post-jsinfo/type_conversion" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/17/jsinfo/type_conversion/" class="article-date">
+  <time datetime="2019-10-16T18:37:31.406Z" itemprop="datePublished">2019-10-17</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/17/jsinfo/type_conversion/">003 - JS类型转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JS的类型一般有String，Number，Boolean，Symbol，null，undefined，Object这几种，其中前四种可以认为是简单类型，Object是复杂类型（包括Array，Date等），中间两种自成一体。</p>
+<p>我们都知道JS是弱类型的语言，所以难免会进行类型转换，而转换又有显式和隐式之分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> == <span class="literal">null</span>			<span class="comment">// false</span></span><br><span class="line"><span class="number">2</span> / <span class="string">'5'</span>				<span class="comment">// 0.4</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'3'</span>)			<span class="comment">// 3</span></span><br><span class="line"><span class="number">1</span> === <span class="literal">null</span>			<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>第一，二行会进行隐式转换，第三行是显式转换，而第四行不会转换类型。这里先讨论隐式转换，无论是简单类型还是复杂类型，隐式转为最后都会转为boolean，string或者number中的一种。</p>
+<h2 id="什么时候会进行隐式转换，又会转为什么类型"><a href="#什么时候会进行隐式转换，又会转为什么类型" class="headerlink" title="什么时候会进行隐式转换，又会转为什么类型"></a>什么时候会进行隐式转换，又会转为什么类型</h2>
+        
+          <p class="article-more-link">
+            <a href="/blog/2019/10/17/jsinfo/type_conversion/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/17/jsinfo/type_conversion/" data-id="ck5h0go9u0021v8vanmqou6pi" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/17/jsinfo/type_conversion/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/code/">code</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
 <article id="post-jsinfo/comparions" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
@@ -130,7 +191,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/15/jsinfo/comparions/" data-id="ck38xayez001m90vaunl3obcu" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/15/jsinfo/comparions/" data-id="ck5h0go9n001uv8vadqrzftir" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/15/jsinfo/comparions/#comments" class="article-comment-link">留言</a>
       
@@ -191,7 +252,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/" data-id="ck38xayfi002a90vay4ar34jt" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/" data-id="ck5h0goah002qv8vacz7jcgy3" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/14/mongoose/drop_collections/#comments" class="article-comment-link">留言</a>
       
@@ -250,7 +311,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/" data-id="ck38xayf8001y90vawu3twwh5" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/" data-id="ck5h0go9y0025v8va49pvkmzx" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/13/jsinfo/operators/#comments" class="article-comment-link">留言</a>
       
@@ -332,7 +393,7 @@
     </li></ul></div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/" data-id="ck38xayey001l90va5sec980i" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/" data-id="ck5h0go9l001sv8va9ptzrx11" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/css/style_categories/#comments" class="article-comment-link">留言</a>
       
@@ -391,12 +452,73 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/" data-id="ck38xayfl002d90vau7kh0nnc" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/" data-id="ck5h0goae002nv8va31ly799j" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/mongoose/mongoose_issues/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/mongoose/">mongoose</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
+<article id="post-canvas/canvas_text_position" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2019/10/11/canvas/canvas_text_position/" class="article-date">
+  <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道canvas中绘制文本主要有两个方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure>
+<p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p>
+<p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p>
+<p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br>
+        
+          </p><p class="article-more-link">
+            <a href="/blog/2019/10/11/canvas/canvas_text_position/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck5h0go92001bv8va9cm40e9w" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
 
     </footer>
   </div>
@@ -455,70 +577,9 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/" data-id="ck38xayep001c90vayb6lcme2" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/" data-id="ck5h0go9a001hv8va5c55lc8o" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-canvas/canvas_text_position" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/canvas/canvas_text_position/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.528Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_text_position/">Canvas中文本的定位</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们知道canvas中绘制文本主要有两个方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure>
-<p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p>
-<p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p>
-<p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br>
-        
-          </p><p class="article-more-link">
-            <a href="/blog/2019/10/11/canvas/canvas_text_position/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/" data-id="ck38xayer001f90vaw8geev6i" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
@@ -580,7 +641,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck38xayet001g90valnmb1li3" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/" data-id="ck5h0go9e001lv8vayeiwrrqb" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/css/css_foundation/#comments" class="article-comment-link">留言</a>
       
@@ -641,71 +702,12 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck38xaybz000a90va4ebyv12z" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/" data-id="ck5h0go5q000bv8valy7sqoyl" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/10/11/use_verdaccio/#comments" class="article-comment-link">留言</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/npm/">npm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    
-<article id="post-canvas/canvas_keyboard_events" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/11/canvas/canvas_keyboard_events/" class="article-date">
-  <time datetime="2019-10-10T19:32:59.512Z" itemprop="datePublished">2019-10-11</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/11/canvas/canvas_keyboard_events/">Canvas的键盘事件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keydown'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keydown'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keyup'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keypress'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keypress'</span>,e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>如果按下的时可见字符，keypress事件会在keydown与keyup事件之间触发，否则不会触发。<br>如果按下某个可见字符持续一段时间，浏览器(谷歌)会循环触发keydown，keypress事件，直到松开按键触发一次keyup事件。</p>
-<p><strong>要想知道按下的是哪个键，一般可以从传给事件处理函数的事件对象中获取。</strong></p>
-<p>对于keydown，keyup事件，其事件对象的keyCode属性一般会保存按下的可见字符的ASCII码，如果是不可见字符，可以读取altKey，ctrlKey，metaKey，shiftKey这些属性来判断。<br>对于keypress事件，一定可以用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.fromCharCode(event.which)</span><br></pre></td></tr></table></figure>
-<p>获取当前按下的字符。</p>
-
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/" data-id="ck38xayen001b90valcc7478o" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/canvas/">canvas</a></li></ul>
 
     </footer>
   </div>
@@ -737,6 +739,12 @@
         
           
           <li>
+            <a href="/blog/2020/01/17/excel/data_input/">Excel中的数据输入</a>
+          </li>
+          
+        
+          
+          <li>
             <a href="/blog/2019/11/22/css/bg_position/">背景图定位</a>
           </li>
           
@@ -759,12 +767,6 @@
           </li>
           
         
-          
-          <li>
-            <a href="/blog/2019/11/09/jsinfo/virtual_dom/">从零开始学虚拟DOM</a>
-          </li>
-          
-        
       </ul>
     </div>
   </div>
@@ -774,7 +776,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/excel/">excel</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -784,7 +786,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Object/">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vuejs/">vuejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/时延/">时延</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/虚拟DOM/">虚拟DOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Object/">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vuejs/">vuejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/数据输入/">数据输入</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/时延/">时延</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/虚拟DOM/">虚拟DOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -794,7 +796,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 13.33px;">JS操作符</a> <a href="/blog/tags/Object/" style="font-size: 10px;">Object</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 20px;">code</a> <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 13.33px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/blog/tags/vuejs/" style="font-size: 13.33px;">vuejs</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/时延/" style="font-size: 10px;">时延</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/虚拟DOM/" style="font-size: 10px;">虚拟DOM</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 13.33px;">JS操作符</a> <a href="/blog/tags/Object/" style="font-size: 10px;">Object</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 20px;">code</a> <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 13.33px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/blog/tags/vuejs/" style="font-size: 13.33px;">vuejs</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/数据输入/" style="font-size: 10px;">数据输入</a> <a href="/blog/tags/时延/" style="font-size: 10px;">时延</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/虚拟DOM/" style="font-size: 10px;">虚拟DOM</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
     </div>
   </div>
 
@@ -803,7 +805,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">十一月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">21</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">十一月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">21</span></li></ul>
     </div>
   </div>
 
@@ -816,7 +818,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 wyin
+      &copy; 2020 wyin
       <br>
       <div id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</div>
       <br>

@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://ywxgod.github.io/blog/"/>
-  <updated>2019-11-21T16:21:24.277Z</updated>
+  <updated>2020-01-16T17:29:48.493Z</updated>
   <id>https://ywxgod.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Excel中的数据输入</title>
+    <link href="https://ywxgod.github.io/blog/2020/01/17/excel/data_input/"/>
+    <id>https://ywxgod.github.io/blog/2020/01/17/excel/data_input/</id>
+    <published>2020-01-16T17:25:06.523Z</published>
+    <updated>2020-01-16T17:29:48.493Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Excel高效录入数据的4个诀窍"><a href="#Excel高效录入数据的4个诀窍" class="headerlink" title="Excel高效录入数据的4个诀窍"></a>Excel高效录入数据的4个诀窍</h2><ol><li><p><strong>快速输入当前日期和时间</strong></p><p>按<code>Ctrl+;</code>可以自动输入当前日期；按<code>Ctrl+Shift+；</code>可以自动输入当前时间</p><p>输入日期的格式：年/月/日，如：2020/1/16。注意：这里的月/日可能是一位数字，如果要将月/日变成相同的长度，可以用数字格式处理。</p><p>输入的时间格式：时:分，如：23:46。注意：这里时/分长度一样可能是一位数字。</p></li><li><p><strong>批量输入相同内容</strong></p><p>当需要在多个单元格输入相同的内容时，可以先选中这些单元格（如何快速选中这些单元格，请看下一条），然后输入内容，此时只会显示在一个单元格中，输入结束时只需按<code>Ctrl+Enter</code>，即可以自动用输入的内容填充所选中的所有单元格</p><p><img src="/blog/css/images/批量输入内容.gif" alt=""></p></li><li><p><strong>批量选中数据区域</strong></p><p>批量选中单元格时，一般会用到<code>Ctrl</code>和<code>Shift</code>两个键。当然不用按键，你可以直接用鼠标拖动选择也可以选中多个单元格。<code>Ctrl</code>主要用于选中多个不相邻的单元格；<code>Shift</code>用于选中多个连续的单元格</p><p>还可以通过筛选和定位功能选取某一列需要的单元格，然后再批量选中，进行批量操作。</p></li><li><p><strong>减少鼠标和键盘间的来回切换</strong></p><p>除了可以通过上下左右箭头键来选中移动单元格选中之外，我们还可以用<code>tab</code>键或者<code>shift+tab</code>键来移动单元格选中。<code>tab</code>是向右移动，<code>shift+tab</code>则会向左移动。</p></li></ol><h2 id="批量生成数字序列的3种方法"><a href="#批量生成数字序列的3种方法" class="headerlink" title="批量生成数字序列的3种方法"></a>批量生成数字序列的3种方法</h2><ol><li><p><strong>拖拽：拖动鼠标到哪里就填充到哪里</strong></p><p>选中单元格后，右下角会有一个小方块，称为<code>填充柄</code>，只要拖动<code>填充柄</code>就可以快速填充连续的数字。这里填充的序列根据你输入在单元格中的内容来决定：如果只输入了一个单元格，且从第一个单元格拖动<code>填充柄</code>，则会复制第一个单元格的内容到其他单元格。</p></li><li><p><strong>双击：自动填充到最后一行</strong></p><p>当选中单元格相邻列有数据时，双击选中单元格的<code>填充柄</code>会自动填充到与相邻列相同的行。</p><p><img src="/blog/css/images/双击填充.gif" alt=""></p></li><li><p><strong>按指定条件自动生成序列</strong></p><p>当需要填充的数据较多，且明确开始和结束数值时，可以用序列填充面板，如下图：</p><p><img src="/blog/css/images/自动填充序列.png" alt=""></p></li></ol><h2 id="4种特殊数据的输入方法"><a href="#4种特殊数据的输入方法" class="headerlink" title="4种特殊数据的输入方法"></a>4种特殊数据的输入方法</h2><ol><li><p><strong>数字前面输入0</strong></p><p>a. 在输入数据前，先输入英文单引号，然后再在单引号后面输入0即可。</p><p>b. 还可以设置单元格格式为文本，这样也可以输入0</p></li><li><p><strong>输入身份证号，银行账号</strong></p><p>当输入身份证，银行账号时，excel会认为是长数字，它会自动转为科学计数法显示数字。所以只要我们将单元格格式设置为文本即可。</p></li><li><p><strong>输入标准日期</strong></p><p>excel中的日期为特殊的数字，可以进行数学计算。且标准的日期格式是斜杠隔开的年月日，如：2020/1/17</p></li><li><p><strong>输入特殊符号</strong></p><p>a. 可以通过 <code>插入</code> - <code>符号</code> 菜单插入特殊符号。</p><p>b. 直接通过输入法提供的特殊字符面板输入，如：搜狗输入法</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Excel高效录入数据的4个诀窍&quot;&gt;&lt;a href=&quot;#Excel高效录入数据的4个诀窍&quot; class=&quot;headerlink&quot; title=&quot;Excel高效录入数据的4个诀窍&quot;&gt;&lt;/a&gt;Excel高效录入数据的4个诀窍&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;stro
+      
+    
+    </summary>
+    
+      <category term="excel" scheme="https://ywxgod.github.io/blog/categories/excel/"/>
+    
+    
+      <category term="数据输入" scheme="https://ywxgod.github.io/blog/tags/%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>背景图定位</title>
@@ -407,6 +433,32 @@
   </entry>
   
   <entry>
+    <title>Canvas中文本的定位</title>
+    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
+    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
+    <published>2019-10-10T19:32:59.528Z</published>
+    <updated>2019-08-19T15:44:23.727Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
+&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
+&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
+    
+    
+      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Canvas大小的设定</title>
     <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/"/>
     <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_size_intro/</id>
@@ -425,32 +477,6 @@
 &lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.canvas&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;600px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;300px&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;canvas&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;width&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;300&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;height&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;150&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;canvas&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;两种方法的区别：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
-    
-    
-      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canvas中文本的定位</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_text_position/</id>
-    <published>2019-10-10T19:32:59.528Z</published>
-    <updated>2019-08-19T15:44:23.727Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们知道canvas中绘制文本主要有两个方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeText(<span class="string">'text'</span>,x,y);</span><br><span class="line">ctx.fillText(<span class="string">'text'</span>,x,y);</span><br></pre></td></tr></table></figure><p>text - 需要绘制的文本<br>x - 文本的x坐标<br>y - 文本的y坐标</p><p>但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。<br>用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。</p><p>canvas中有两个属性来设置文本的注册点：<strong>textAlign</strong>和<strong>textBaseline</strong><br><a id="more"></a></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.textAlign = <span class="string">"left"</span> || <span class="string">"right"</span> || <span class="string">"center"</span> || <span class="string">"start"</span> || <span class="string">"end"</span>;</span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span> || <span class="string">"hanging"</span> || <span class="string">"middle"</span> || <span class="string">"alphabetic"</span> || <span class="string">"ideographic"</span> || <span class="string">"bottom"</span>;</span><br></pre></td></tr></table></figure><p>textAlign表示文本在水平方向上的对齐方式，默认值为left。<br>textBaseline表示文本在垂直方向的对齐方式，默认值为alphabetic。</p><p><img src="/blog/css/images/canvas_text_pos.png" alt="textAlign与textBaseline具体的表现"></p><p>从上图可以看到textAlign和textBaseline是如何影响文本的位置的，接下来处理文本对齐的问题。</p><p>让文本在canvas上居中：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">context.font = <span class="string">'38px sans-serif'</span>;</span><br><span class="line">context.textAlign = <span class="string">'center'</span>;</span><br><span class="line">context.textBaseline = <span class="string">'middle'</span>;</span><br><span class="line">context.strokeStyle = <span class="string">'blue'</span>;</span><br><span class="line">context.strokeText(<span class="string">'What can I do for you?'</span>, canvas.width/<span class="number">2</span>,canvas.height/<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>textAlign,textBaseline分别设置为center,middle相当于将文本的注册点移动到了文本本身的中间位置，<br>所以绘制的时候只要设置坐标为canvas的中间位置即可。</p><p>如果将文本的注册点设置到文本的左上角，即start/top。<br>此时要居中文本得知道文本得高度和宽度，然后算出文本的坐标：</p><p>x = canvas.width/2-textWidth/2;<br>y = canvas.height/2-textHeight/2;</p><p>虽然measureText可以拿到文本的大概宽度，但无法获取文本的高度，<br>所以如果将注册点设置到左上角，要想居中对齐文本就没有那么精确了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我们知道canvas中绘制文本主要有两个方法：&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ctx.strokeText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ctx.fillText(&lt;span class=&quot;string&quot;&gt;&#39;text&#39;&lt;/span&gt;,x,y);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;text - 需要绘制的文本&lt;br&gt;x - 文本的x坐标&lt;br&gt;y - 文本的y坐标&lt;/p&gt;
-&lt;p&gt;但是文本本身有宽度高度，所以要精确定位文本仅仅知道坐标还不行，还得知道坐标对应于文本本身的哪个点。&lt;br&gt;用Flash的概念来说，就是我们还需要知道文本的注册点在哪里。&lt;/p&gt;
-&lt;p&gt;canvas中有两个属性来设置文本的注册点：&lt;strong&gt;textAlign&lt;/strong&gt;和&lt;strong&gt;textBaseline&lt;/strong&gt;&lt;br&gt;
     
     </summary>
     
@@ -511,32 +537,6 @@
       <category term="npm" scheme="https://ywxgod.github.io/blog/tags/npm/"/>
     
       <category term="node.js" scheme="https://ywxgod.github.io/blog/tags/node-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canvas的键盘事件</title>
-    <link href="https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/"/>
-    <id>https://ywxgod.github.io/blog/2019/10/11/canvas/canvas_keyboard_events/</id>
-    <published>2019-10-10T19:32:59.512Z</published>
-    <updated>2019-08-19T15:44:23.725Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keydown'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keydown'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keyup'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keyup'</span>,e);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'keypress'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'keypress'</span>,e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>如果按下的时可见字符，keypress事件会在keydown与keyup事件之间触发，否则不会触发。<br>如果按下某个可见字符持续一段时间，浏览器(谷歌)会循环触发keydown，keypress事件，直到松开按键触发一次keyup事件。</p><p><strong>要想知道按下的是哪个键，一般可以从传给事件处理函数的事件对象中获取。</strong></p><p>对于keydown，keyup事件，其事件对象的keyCode属性一般会保存按下的可见字符的ASCII码，如果是不可见字符，可以读取altKey，ctrlKey，metaKey，shiftKey这些属性来判断。<br>对于keypress事件，一定可以用</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.fromCharCode(event.which)</span><br></pre></td></tr></table></figure><p>获取当前按下的字符。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;canvas是不可获取焦点的，所以无法用canvas监听键盘事件。如果要监听键盘事件，需要用document或者window对象来监听。&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr
-      
-    
-    </summary>
-    
-      <category term="重学JS" scheme="https://ywxgod.github.io/blog/categories/%E9%87%8D%E5%AD%A6JS/"/>
-    
-    
-      <category term="canvas" scheme="https://ywxgod.github.io/blog/tags/canvas/"/>
     
   </entry>
   
