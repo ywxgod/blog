@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>electron应用：从输入的url解析对应页面的title | Web Snippets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="baidu-site-verification" content="oLJXAOYkTP">
+  <meta name="description" content="electron应用：从输入的url解析对应页面的title">
+<meta name="keywords" content="应用实例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="electron应用：从输入的url解析对应页面的title">
+<meta property="og:url" content="https://ywxgod.github.io/blog/2020/07/10/electron/url_to_link/index.html">
+<meta property="og:site_name" content="Web Snippets">
+<meta property="og:description" content="electron应用：从输入的url解析对应页面的title">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-07-09T18:06:44.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="electron应用：从输入的url解析对应页面的title">
+<meta name="twitter:description" content="electron应用：从输入的url解析对应页面的title">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Web Snippets" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/highlight/styles/darkula.css">
+  <script src="/blog/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="/blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header" style="height: 60px;">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Web Snippets</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">code，food，english，history</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">首页</a>
+        
+          <a class="main-nav-link" href="/blog/archives">归档</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <!--<a id="nav-search-btn" class="nav-icon" title="搜索"></a>-->
+      </nav>
+      <div>
+        <script>
+        (function() {
+          /*var cx = '014509043148742714522:kpw0mr56_rs';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);*/
+        })();
+      </script>
+      <!--<gcse:search></gcse:search>-->
+      </div>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ywxgod.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+<article id="post-electron/url_to_link" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2020/07/10/electron/url_to_link/" class="article-date">
+  <time datetime="2020-07-09T18:04:40.066Z" itemprop="datePublished">2020-07-10</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/electron/">electron</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      electron应用：从输入的url解析对应页面的title
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="electron应用：从输入的url解析对应页面的title"><a href="#electron应用：从输入的url解析对应页面的title" class="headerlink" title="electron应用：从输入的url解析对应页面的title"></a>electron应用：从输入的url解析对应页面的title</h3><a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> clearForm = <span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</span><br><span class="line">    newLinkUrl.value = <span class="literal">null</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证response，当状态码为400或500系列时，response.ok为false</span></span><br><span class="line"><span class="keyword">const</span> validateResponse = <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(response.ok) &#123; <span class="keyword">return</span> response; &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Status of code <span class="subst">$&#123;response.status&#125;</span> <span class="subst">$&#123;response.statusText&#125;</span>`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用DOMParser解析获取到的html字符串</span></span><br><span class="line"><span class="keyword">const</span> parseHTML = <span class="function"><span class="params">htmlString</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DOMParser().parseFromString(htmlString, <span class="string">'text/html'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DOMParser.parseFromString方法返回代码片段，需要调用querySelect方法查询出title</span></span><br><span class="line"><span class="keyword">const</span> queryTitle = <span class="function"><span class="params">frameElement</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> frameElement.querySelector(<span class="string">'title'</span>).innerHTML;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以url为键，&#123;url，title&#125;为值存进本地</span></span><br><span class="line"><span class="keyword">const</span> saveToLocal = <span class="function">(<span class="params">title, url</span>) =&gt;</span> &#123;</span><br><span class="line">    localStorage.setItem(url, <span class="built_in">JSON</span>.stringify(&#123;url, title&#125;));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理错误注意调用了trim方法</span></span><br><span class="line"><span class="keyword">const</span> handleError = <span class="function">(<span class="params">err, url</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">    errorMessage.innerHTML = <span class="string">`There was an issue adding <span class="subst">$&#123;url&#125;</span>: <span class="subst">$&#123;err.message&#125;</span>`</span>.trim();</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> errorMessage.innerHTML = <span class="string">''</span>, <span class="number">5000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将本地存储的键值对转为数组[&#123;title,url&#125;]</span></span><br><span class="line"><span class="keyword">const</span> getLinks = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.keys(localStorage).map(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(localStorage.getItem(key));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将键值对转换为页面元素</span></span><br><span class="line"><span class="keyword">const</span> linkToElement = <span class="function"><span class="params">link</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">        &lt;div class="link"&gt;</span></span><br><span class="line"><span class="string">            &lt;h3&gt;<span class="subst">$&#123;link.title&#125;</span>&lt;/h3&gt;</span></span><br><span class="line"><span class="string">            &lt;p&gt;</span></span><br><span class="line"><span class="string">                &lt;a href="<span class="subst">$&#123;link.url&#125;</span>"&gt;<span class="subst">$&#123;link.url&#125;</span>&lt;/a&gt;</span></span><br><span class="line"><span class="string">            &lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">    `</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> renderLinks = <span class="function"><span class="params">links</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(!links) links = getLinks();</span><br><span class="line">    <span class="keyword">const</span> elementString = links.map(<span class="function"><span class="params">i</span> =&gt;</span> linkToElement(i)).join(<span class="string">''</span>);</span><br><span class="line">    linkSection.innerHTML = elementString;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 主要步骤</span></span><br><span class="line"><span class="keyword">const</span> run = <span class="function"><span class="params">url</span> =&gt;</span> &#123;</span><br><span class="line">    fetch(url)</span><br><span class="line">        .then(validateResponse)</span><br><span class="line">        .then(<span class="function"><span class="params">response</span> =&gt;</span> response.text())</span><br><span class="line">        .then(parseHTML)</span><br><span class="line">        .then(queryTitle)</span><br><span class="line">        .then(<span class="function"><span class="params">title</span> =&gt;</span> saveToLocal(title, url))</span><br><span class="line">        .then(clearForm)</span><br><span class="line">        .then(renderLinks)</span><br><span class="line">        .catch(<span class="function"><span class="params">err</span> =&gt;</span> handleError(err, url))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码有个问题：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$&#123;link.url&#125;"</span>&gt;</span>$&#123;link.url&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;a href="$&#123;link.url&#125;" target="_blank"&gt;$&#123;link.url&#125;&lt;/a&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>url被渲染成了a元素，当点击a元素时，electron应用会被链接替换，且无法回到electron应用中。我们可以给a元素增加target属性，让链接在新应用窗口打开来解决这个问题，但这不是最好的。因为链接还是在应用窗口打开，而不是用户系统默认的浏览器来打开的。</p>
+<p>我们可以用electron的shell模块可以处理上面的场景，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">linkSection.addEventListener(<span class="string">'click'</span>, event =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(event.target.href) &#123;</span><br><span class="line">        <span class="comment">// 阻止a元素默认行为</span></span><br><span class="line">        event.preventDefault();</span><br><span class="line">        <span class="comment">// 调用默认浏览器打开链接</span></span><br><span class="line">        shell.openExternal(event.target.href);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li>fetch请求响应时可以先通过response.ok验证响应的成功与失败。</li>
+<li>DOMParser类提供的parseFromString方法可以将页面字符串转为页面元素。</li>
+<li>shell模块的openExternal方法可以调用系统默认浏览器打开链接</li>
+</ul>
+
+      
+    </div>
+    
+      <div class="copyright copyright-container">
+      <div class="article-entry copyright-div">
+        <img src="/blog/css/images/qrcode_oio.jpg" title="同步公众号二维码" class="qr_code-img">
+        <div class="text">
+            所有文章均为原创，如需转载请注明出处<br>
+            敬请扫码关注同步公众号<br>
+            作者：wyin, ywxgod, ywxgood, ywx1818@163.com<br>
+            公众号：ohoiojo<br>
+            来源：http://ywxgod.github.io/blog<br>
+        </div>
+      </div>
+      </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2020/07/10/electron/url_to_link/" data-id="ckcf3te3l001uz4va3jq3vnq1" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2020/07/10/electron/url_to_link/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/应用实例/">应用实例</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+<section id="comments">
+    <div id="gitmentContainer"></div>
+    <link rel="stylesheet" href="/blog/css/custom/default.css">
+    <script src="/blog/js/gitment.browser.js"></script>
+    <script>
+      var gitment = new Gitment({
+          id: 'Fri Jul 10 2020 02:04:40 GMT+0800',
+          owner: 'ywxgod', 
+          repo: 'blog',
+          oauth: {
+              client_id: 'cb5071a3a89f450b30c2',
+              client_secret: '69efceee331ec865ef7cce997565a69e5bb0993c',
+          },
+      });
+      gitment.render('gitmentContainer')
+    </script>
+</section>
+
+
+
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2020/07/10/electron/first_issues/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">初学Electron遇到的两个问题</div>
+    </a>
+  
+</nav>
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          
+          <li>
+            <a href="/blog/2020/07/10/electron/url_to_link/">electron应用：从输入的url解析对应页面的title</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2020/07/10/electron/first_issues/">初学Electron遇到的两个问题</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2020/01/17/excel/data_input/">Excel中的数据输入</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/11/22/css/bg_position/">背景图定位</a>
+          </li>
+          
+        
+          
+          <li>
+            <a href="/blog/2019/11/22/python/read_txt_file/">用open函数读取文本文件内容</a>
+          </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/electron/">electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/excel/">excel</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Object/">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vuejs/">vuejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/入门问题/">入门问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/应用实例/">应用实例</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/数据输入/">数据输入</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/时延/">时延</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/虚拟DOM/">虚拟DOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 13.33px;">JS操作符</a> <a href="/blog/tags/Object/" style="font-size: 10px;">Object</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 20px;">code</a> <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 13.33px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/blog/tags/vuejs/" style="font-size: 13.33px;">vuejs</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/入门问题/" style="font-size: 10px;">入门问题</a> <a href="/blog/tags/应用实例/" style="font-size: 10px;">应用实例</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/数据输入/" style="font-size: 10px;">数据输入</a> <a href="/blog/tags/时延/" style="font-size: 10px;">时延</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/虚拟DOM/" style="font-size: 10px;">虚拟DOM</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">十一月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">21</span></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 wyin
+      <br>
+      <div id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</div>
+      <br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">首页</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    
+
+<script src="/blog/js/jquery-2.2.4.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>
