@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://miro.medium.com/max/700/1*THT6G99kiIEPZ3Mm6N09Bw.png">
 <meta property="og:image" content="https://miro.medium.com/max/2000/1*2yXbhvpf1kj5YT-m_fXgEQ.png">
 <meta property="og:image" content="https://miro.medium.com/max/700/1*-0Sa0i_g-gcL9sJqvecKEw.png">
-<meta property="og:updated_time" content="2020-08-18T15:47:06.731Z">
+<meta property="og:updated_time" content="2020-08-18T15:53:19.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node.js事件循环概述">
 <meta name="twitter:description" content="原文链接: https://blog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810 NodeJS区别于其他平台之处就在于它如何处理I/O。我们经常听到有人说：“Nodejs是一个基于谷歌v8引擎的非阻塞，事件驱动的平台”。那么这句话究竟什么意思？“非阻塞”和“事件驱动”又">
@@ -124,7 +124,7 @@
       
         <p>原文链接: <a href="https://blog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810" target="_blank" rel="noopener">https://blog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810</a></p>
 <p>NodeJS区别于其他平台之处就在于它如何处理I/O。我们经常听到有人说：“Nodejs是一个基于谷歌v8引擎的非阻塞，事件驱动的平台”。那么这句话究竟什么意思？“非阻塞”和“事件驱动”又是指什么？… 这些问题的答案就在于NodeJS的核心，事件循环。在这个系列的文章中，我将解释什么是事件循环，它如何工作，如何影响我们的应用程序，如何进行最佳实践。而第一篇中，我将描述NodeJS如何运行，它如何访问I/O以及访问I/O时不同平台的区别。</p>
-<h2 id="Reactor-模式"><a href="#Reactor-模式" class="headerlink" title="Reactor 模式"></a>Reactor 模式</h2><p>NodeJS的工作模型是事件驱动，该模型涉及事件多路分解器(Event Demultiplexer)和事件队列(Event Queue)等两个主要部分.Node.js所有的I/O请求处理最终都会产生一个成功/失败事件或者触发其他事件，而这些事件(包括I/O事件和其他事件)都会依据下面的算法被NodeJS处理。</p>
+<h2 id="Reactor-模式"><a href="#Reactor-模式" class="headerlink" title="Reactor 模式"></a>Reactor 模式</h2><p>NodeJS的工作模型是事件驱动，该模型涉及事件多路分解器(Event Demultiplexer)和事件队列(Event Queue)等两个主要部分.Node.js所有的I/O请求处理最终都会产生一个成功/失败事件或者触发其他事件，而这些事件(包括I/O事件和其他事件)都会依据下面的算法被NodeJS处理。<br><a id="more"></a></p>
 <ol>
 <li>事件多路分解器接收到I/O请求，它会将请求分配到合适的硬件处理。</li>
 <li>一旦某个I/O请求被处理(例如：文件数据可以读取了，来自socket连接的数据可用了等等)，事件多路分解器会将已注册的回调函数添加到事件队列中以便后面被执行。</li>
