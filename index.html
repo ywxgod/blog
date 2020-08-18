@@ -89,6 +89,141 @@
         <section id="main">
   
     
+<article id="post-nodejs/event_loop_overview" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/blog/2020/08/18/nodejs/event_loop_overview/" class="article-date">
+  <time datetime="2020-08-18T15:44:17.772Z" itemprop="datePublished">2020-08-18</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/E文翻译/">E文翻译</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2020/08/18/nodejs/event_loop_overview/">Node.js事件循环概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原文链接: <a href="https://blog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810" target="_blank" rel="noopener">https://blog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810</a></p>
+<p>NodeJS区别于其他平台之处就在于它如何处理I/O。我们经常听到有人说：“Nodejs是一个基于谷歌v8引擎的非阻塞，事件驱动的平台”。那么这句话究竟什么意思？“非阻塞”和“事件驱动”又是指什么？… 这些问题的答案就在于NodeJS的核心，事件循环。在这个系列的文章中，我将解释什么是事件循环，它如何工作，如何影响我们的应用程序，如何进行最佳实践。而第一篇中，我将描述NodeJS如何运行，它如何访问I/O以及访问I/O时不同平台的区别。</p>
+<h2 id="Reactor-模式"><a href="#Reactor-模式" class="headerlink" title="Reactor 模式"></a>Reactor 模式</h2><p>NodeJS的工作模型是事件驱动，该模型涉及事件多路分解器(Event Demultiplexer)和事件队列(Event Queue)等两个主要部分.Node.js所有的I/O请求处理最终都会产生一个成功/失败事件或者触发其他事件，而这些事件(包括I/O事件和其他事件)都会依据下面的算法被NodeJS处理。</p>
+<ol>
+<li>事件多路分解器接收到I/O请求，它会将请求分配到合适的硬件处理。</li>
+<li>一旦某个I/O请求被处理(例如：文件数据可以读取了，来自socket连接的数据可用了等等)，事件多路分解器会将已注册的回调函数添加到事件队列中以便后面被执行。</li>
+<li>当队列中的回调函数变得可以被执行时(队列中可能不止一个回调函数)，它们会按照顺序被执行，一直到队列变为空。(执行完的回调函数会被出队)</li>
+<li>如果队列中没有待执行的回调函数或者分解器中没有待处理的请求了，那么程序的执行将停下，否则会从第一步开始继续执行下面的步骤。</li>
+</ol>
+<p>协调上面整个机制的程序我们就叫它事件循环。如下图：</p>
+<p><img src="https://miro.medium.com/max/561/1*3fzASvL5gFrSC64hHKzQOQ.jpeg" alt="https://miro.medium.com/max/561/1*3fzASvL5gFrSC64hHKzQOQ.jpeg"></p>
+<p>事件循环是一个单线程半无限循环，为什么说是半无限循环？因为循环会在没有事情处理的时候退出。从开发者的角度来看，即程序退出了。</p>
+<p>不要把event loop与EventEmitter搞混了。EventEmitter跟Event Loop完全是两个不同的概念。</p>
+<p>在上面的图中我们从较高层次的视角概括了NodeJS如何工作的，且展示了Reactor模式的主要组成部分。但Reactor模式的复杂性不是一张图能说明的，那么它究竟有多复杂？</p>
+<p>不同操作系统中处理不同类型I/O操作的事件多路分解器其实不是一个单一的组件。事件队列也不是像图上那样是一个单一的队列，而且I/O事件也不是唯一在队列中处理的事件。</p>
+<p>接下来，让我们深入研究一下。</p>
+<h2 id="事件多路分解器-Event-Demultiplexer"><a href="#事件多路分解器-Event-Demultiplexer" class="headerlink" title="事件多路分解器(Event Demultiplexer)"></a>事件多路分解器(Event Demultiplexer)</h2><p>在真实的环境中，事件多路分解器是并不存在的，它只是Reactor模式中的一个抽象概念。真实环境中，不同的操作系统对事件多路分解器的实现也是不同的，比如<strong>Linux中叫epoll，BSD(macOS)中叫kqueue，Solaris中叫event ports 而 Windows中叫IOCP(Input Output Completion Port)</strong>. NodeJS内部跨平台处理非阻塞，异步硬件I/O实际是通过上面不同的实现来处理的。</p>
+<h2 id="文件I-O的复杂性"><a href="#文件I-O的复杂性" class="headerlink" title="文件I/O的复杂性"></a>文件I/O的复杂性</h2><p>比较让人困惑的是，并不是所有的I/O都是通过上面的实现来处理的。甚至在相同的操作系统平台，要支持不同类型的I/O也有一定的复杂性。常见的例子，如网络I/O可以被epoll, kqueue, event ports, iocp等以异步非阻塞的方式处理，但是文件I/O却不能，它会更复杂。某些操作系统，如Linux完全不支持异步的文件系统访问，而MacOS中对文件系统操作的通知有很多限制。为了提供统一的异步性，解决这些文件系统的访问复杂性将会非常复杂或者几乎不可能。</p>
+<h2 id="DNS的复杂性"><a href="#DNS的复杂性" class="headerlink" title="DNS的复杂性"></a>DNS的复杂性</h2><p>与文件I/O类似，NodeJS提供的某些DNS功能也是相当的复杂。因为NodeJS中提供DNS功能的函数如：dns.lookup会访问操作系统的配置文件如：nsswitch.conf, resolv.conf, /etc/hosts等，那么上面说的文件I/O的复杂性在这里一样会遇到。</p>
+<h2 id="如何解决？"><a href="#如何解决？" class="headerlink" title="如何解决？"></a>如何解决？</h2><p>因此，NodeJS引入了线程池来支持这些无法直接被硬件异步I/O实现(即上面说的：epoll，kqueue，event ports，IOCP)所处理的I/O功能。所以我们现在知道了，并不是所有的I/O功能都是被线程池处理的。NodeJS利用非阻塞，异步硬件I/O的实现，以最佳的方式处理了大部分的IO操作，但是对于那些阻塞的，无法异步处理，且难以解决的IO，则使用线程池来处理。</p>
+<blockquote>
+<p>然而，I/O并不是线程池处理的唯一任务。NodeJS中的crypto，异步的zlib功能等也是通过线程池处理的，因为他们算CPU高密集型应用，执行的时候耗CPU资源较高。这种CPU密集型功能用线程池来实现可以防止阻塞事件循环。</p>
+</blockquote>
+<h2 id="聚到一起"><a href="#聚到一起" class="headerlink" title="聚到一起"></a>聚到一起</h2><p>在真实的环境中，要支持不同的操作系统中不同类型的I/O操作将会非常困难。有的I/O操作可以由硬件本身实现异步，有的则必须由线程池来保证实现异步。</p>
+<p>对于大部分开发者有一个常见的误解就是：Node.js执行所有的I/O操作都是通过线程池来实现的。</p>
+<p>为了支持不同平台的I/O，我们得有一个抽象层来封装这些平台间和平台内部的复杂性，并且能暴露统一的API给到Node的上层调用。</p>
+<p>那么这是啥？欢迎libuv出场</p>
+<p><img src="https://miro.medium.com/max/700/1*PCRWGXEGI_bF2Rb3JxxBSg.png" alt="https://miro.medium.com/max/700/1*PCRWGXEGI_bF2Rb3JxxBSg.png"></p>
+<p>引用libuv官网的介绍，看一下啥是libuv。</p>
+<blockquote>
+<p>libuv是基于事件驱动的异步I/O模型设计的，它最初只是为Node.js而写的一个支持库。libuv不仅仅只是提供了对不同I/O轮询机制的抽象：回调处理函数和流作为socket及其他实体提供了高级抽象。</p>
+</blockquote>
+<p>接下来我们看看libuv是什么个组成。下图来自于libuv官网，它描述了如何通过公开通用API来处理不同类型的I/O。</p>
+<p><img src="https://miro.medium.com/max/700/1*THT6G99kiIEPZ3Mm6N09Bw.png" alt="https://miro.medium.com/max/700/1*THT6G99kiIEPZ3Mm6N09Bw.png"></p>
+<p>从上图中我们可以知道，事件多路分解器(Event Demultiplexer)并非是一个不可分割的原子实体，而是Libuv暴露给上层Node.js用于各种I/O处理的一些抽象API的集合（简单说就是对底层I/O处理的各种ApI的集合）。对于Node.js Libuv不仅仅提供多路事件解分器的功能，还有事件循环的功能和事件队列机制。</p>
+<p>下面我们看看事件队列。</p>
+<h2 id="事件队列"><a href="#事件队列" class="headerlink" title="事件队列"></a>事件队列</h2><p>事件队列应该是这样一种数据结构，所有事件都由事件循环依次入队并处理，直到队列为空。但是，这在Node.js中是如何发生的，它与抽象的Reator模式描述却完全不同，如何不同？</p>
+<blockquote>
+<p>Node.js中不止一个队列，不同的事件会被放进不同的队列</p>
+</blockquote>
+<blockquote>
+<p>在一个阶段处理完或者进入下一阶段之前，事件循环会处理两个中间队列，直到这两个“中间队列”为空了，再进入下一阶段。</p>
+</blockquote>
+<p>那么，一共有多少个队列？“中间队列”又是啥？</p>
+<p>有4中类型的队列会被libuv的事件循环处理：</p>
+<ul>
+<li>Expired timers and intervals queue — 计时器/定时器类的队列，由他们的回调函数组成的队列。</li>
+<li>IO Events Queue — 各种IO操作回调</li>
+<li>Immediates Queue — setImmediate函数的回调队列</li>
+<li>Close Handlers Queue — 任何 close 事件处理函数</li>
+</ul>
+<blockquote>
+<p>注意：虽然上面我们把这些统称为”队列”，实际上有些是有不同的数据结构的，比如：计时器是存在堆内存中的。</p>
+</blockquote>
+<p>除了上面4个主要队列，还有两个额外的“中间队列”，这两个“中间队列”是由Node.js处理的，而非libuv。</p>
+<ul>
+<li>Next Ticks Queue — 用process.nextTick函数添加的回调函数队列</li>
+<li>Other Microtasks Queue — 其他微任务，包括已处理的Promise回调等。</li>
+</ul>
+<h3 id="事件队列如何工作？"><a href="#事件队列如何工作？" class="headerlink" title="事件队列如何工作？"></a>事件队列如何工作？</h3><p>看下面的图，事件循环开始会检查是否有过期的定时器存在于timers队列，然后按照上面的顺序逐个处理和计数，直到处理完Close Handlers队列，如果队列中再没有需要处理的事件，事件循环会退出。事件循环对每个队列的处理过程，我们可以认为是时间循环的一个阶段。</p>
+<p><img src="https://miro.medium.com/max/2000/1*2yXbhvpf1kj5YT-m_fXgEQ.png" alt="https://miro.medium.com/max/2000/1*2yXbhvpf1kj5YT-m_fXgEQ.png"></p>
+<p>红色标注的中间队列，它的有趣之处在于，在某个阶段结束后，事件循环都会转到这两个中间队列去处理。如果中间队列中有待处理的事件，事件循环将会一直处理中间队列的事件，直到他们都为空。一旦中间队列都为空，事件循环将会进入下一个阶段。</p>
+<blockquote>
+<p>举个例子。假设事件循环正在处理immediates队列，且该队列中有5个待处理的事件处理函数需要被处理。同时，有两个事件处理函数被添加到了next tick队列。那么，接下来一旦事件循环处理完5个immediates队列的函数后，就会检测到next tick中的2个待处理事项，在事件循环处理close handlers队列之前会去处理next tick队列中的2个待处理事项，直到next tick队列中的事项都处理完，事件循环才会进入下一个阶段，即close handler阶段。</p>
+</blockquote>
+<h3 id="Next-tick-队列与其他微任务"><a href="#Next-tick-队列与其他微任务" class="headerlink" title="Next tick 队列与其他微任务"></a>Next tick 队列与其他微任务</h3><p>尽管他们都是事件循环的某两个阶段中间被处理，但Next tick队列比其他微任务的优先级要高。就是说在处理Promise等其他微任务队列之前，next tick队列一定会被清空。</p>
+<blockquote>
+<p>这种优先处理next tick队列的行为仅适用于V8中用原生JS实现的Promise。如果你用了第三方库如：q，bluebird等，将会有完全不同的结果，因为他们实现Promise标准的方式不同。后面我会提到。</p>
+</blockquote>
+<p>上面对于“中间队列”的这种处理方式会引入另外的问题，那就是IO饥饿(starvation)。利用process.nextTick函数大量向next tick队列中加入事件，会导致事件循环一直处理next tick队列而不会进入下一阶段，这就是IO饥饿。</p>
+<blockquote>
+<p>为了阻止这种IO饥饿的情况，以前我们可以通过设置process.maxTickDepth来限制next tick队列的处理次数，但是由于某些原因，在Node.js v0.12版本后被移除了这个限制。</p>
+</blockquote>
+<p>在后面的文章中，我会通过例子来深度讲解这些队列。到这里你也应该明白了什么是事件循环，它是如何实现的以及Node.js是如何处理异步I / O的。最后让我们看看libuv在Node.js架构中的位置：</p>
+<p><img src="https://miro.medium.com/max/700/1*-0Sa0i_g-gcL9sJqvecKEw.png" alt="https://miro.medium.com/max/700/1*-0Sa0i_g-gcL9sJqvecKEw.png"></p>
+<p>在后面的文章中，我将讲解以下内容，但愿不会让您失望：</p>
+<ul>
+<li>Timers，Immediates and process.nextTick</li>
+<li>Resolved Promises and process.nextTick</li>
+<li>Handling I/O</li>
+<li>处理事件循环的最佳做法</li>
+</ul>
+<p>更多细节，大家可以直接打开原文链接订阅作者的博客。最后谢谢大家阅读到最后，翻译能力有限，难免有不达意的地方，请多多包含。</p>
+
+      
+    </div>
+    
+    <footer class="article-footer">
+      <a data-url="https://ywxgod.github.io/blog/2020/08/18/nodejs/event_loop_overview/" data-id="cke04gdss002afcvaklggkq6e" class="article-share-link">Share</a>
+      
+        <a href="https://ywxgod.github.io/blog/2020/08/18/nodejs/event_loop_overview/#comments" class="article-comment-link">留言</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/事件循环/">事件循环</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    
 <article id="post-electron/url_to_link" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     
@@ -127,7 +262,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2020/07/10/electron/url_to_link/" data-id="ckcf3vwrs001sbgvaz7pkxef8" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2020/07/10/electron/url_to_link/" data-id="cke04gdsa001rfcva8gtljx0l" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2020/07/10/electron/url_to_link/#comments" class="article-comment-link">留言</a>
       
@@ -188,7 +323,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2020/07/10/electron/first_issues/" data-id="ckcf3vwrq001rbgvamln78rxq" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2020/07/10/electron/first_issues/" data-id="cke04gdsc001tfcva0k9vqy90" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2020/07/10/electron/first_issues/#comments" class="article-comment-link">留言</a>
       
@@ -246,7 +381,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2020/01/17/excel/data_input/" data-id="ckcf3vwrz001zbgvatmjnwb7g" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2020/01/17/excel/data_input/" data-id="cke04gdsg001yfcvamue6nuof" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2020/01/17/excel/data_input/#comments" class="article-comment-link">留言</a>
       
@@ -307,7 +442,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/11/22/css/bg_position/" data-id="ckcf3vwre001gbgvadm2ickzw" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/11/22/css/bg_position/" data-id="cke04gdry001gfcvac526dm62" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/11/22/css/bg_position/#comments" class="article-comment-link">留言</a>
       
@@ -368,7 +503,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/" data-id="ckcf3vwst002tbgva3i205cfx" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/" data-id="cke04gdu3003sfcvabqf9t2tq" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/11/22/python/read_txt_file/#comments" class="article-comment-link">留言</a>
       
@@ -427,7 +562,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/11/12/vuejs/rerender_in_vuejs/" data-id="ckcf3vwtm003tbgvad0d7ootc" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/11/12/vuejs/rerender_in_vuejs/" data-id="cke04gdu9003wfcvay2d0dkt5" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/11/12/vuejs/rerender_in_vuejs/#comments" class="article-comment-link">留言</a>
       
@@ -485,7 +620,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/" data-id="ckcf3vwrg001hbgvajnz6qjdi" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/" data-id="cke04gds5001mfcva361x6jpl" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/11/11/cs/network_delay/#comments" class="article-comment-link">留言</a>
       
@@ -544,7 +679,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/11/09/jsinfo/virtual_dom/" data-id="ckcf3vwsc002dbgva5z92dxwn" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/11/09/jsinfo/virtual_dom/" data-id="cke04gdta002sfcvaepszk9ud" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/11/09/jsinfo/virtual_dom/#comments" class="article-comment-link">留言</a>
       
@@ -602,7 +737,7 @@
     </div>
     
     <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/11/07/vuejs/reactivity_in_vuejs/" data-id="ckcf3vwsz0030bgvawpn7126a" class="article-share-link">Share</a>
+      <a data-url="https://ywxgod.github.io/blog/2019/11/07/vuejs/reactivity_in_vuejs/" data-id="cke04gdu5003tfcvatvrses74" class="article-share-link">Share</a>
       
         <a href="https://ywxgod.github.io/blog/2019/11/07/vuejs/reactivity_in_vuejs/#comments" class="article-comment-link">留言</a>
       
@@ -620,69 +755,11 @@
 
 
   
-    
-<article id="post-jsinfo/object" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/blog/2019/10/29/jsinfo/object/" class="article-date">
-  <time datetime="2019-10-29T01:25:01.643Z" itemprop="datePublished">2019-10-29</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/重学JS/">重学JS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2019/10/29/jsinfo/object/">005 - Object相关</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="Object属性操作"><a href="#Object属性操作" class="headerlink" title="Object属性操作"></a>Object属性操作</h2><p>object的属性只能是任意字符串，如果给定非字符串，JS会将其转为字符串。<br>实践中最好使用简单数据类型，如：字符串，Symbol，数字等，属性可以是JS保留字，如：<br>
-        
-          </p><p class="article-more-link">
-            <a href="/blog/2019/10/29/jsinfo/object/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    
-    <footer class="article-footer">
-      <a data-url="https://ywxgod.github.io/blog/2019/10/29/jsinfo/object/" data-id="ckcf3vws20023bgvabdhr3ir2" class="article-share-link">Share</a>
-      
-        <a href="https://ywxgod.github.io/blog/2019/10/29/jsinfo/object/#comments" class="article-comment-link">留言</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Object/">Object</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="extend next" rel="next" href="/blog/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/">2</a><a class="page-number" href="/blog/page/3/">3</a><a class="page-number" href="/blog/page/4/">4</a><a class="extend next" rel="next" href="/blog/page/2/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -694,6 +771,12 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          
+          <li>
+            <a href="/blog/2020/08/18/nodejs/event_loop_overview/">Node.js事件循环概述</a>
+          </li>
+          
         
           
           <li>
@@ -719,12 +802,6 @@
           </li>
           
         
-          
-          <li>
-            <a href="/blog/2019/11/22/python/read_txt_file/">用open函数读取文本文件内容</a>
-          </li>
-          
-        
       </ul>
     </div>
   </div>
@@ -734,7 +811,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/electron/">electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/excel/">excel</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">9</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/E文翻译/">E文翻译</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/electron/">electron</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/excel/">excel</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/重学JS/">重学JS</a><span class="category-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -744,7 +821,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Object/">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vuejs/">vuejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/入门问题/">入门问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/应用实例/">应用实例</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/数据输入/">数据输入</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/时延/">时延</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/虚拟DOM/">虚拟DOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/CORS/">CORS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/JS操作符/">JS操作符</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Node-js/">Node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Object/">Object</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/canvas/">canvas</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/code/">code</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/element-ui/">element-ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/http-server/">http-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/mongoose/">mongoose</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/sublime-text/">sublime text</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/timeout/">timeout</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/typescript/">typescript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vuejs/">vuejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/事件循环/">事件循环</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/入门问题/">入门问题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/应用实例/">应用实例</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/按需加载/">按需加载</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/数据输入/">数据输入</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/时延/">时延</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/自定义样式/">自定义样式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/虚拟DOM/">虚拟DOM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -754,7 +831,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 13.33px;">JS操作符</a> <a href="/blog/tags/Object/" style="font-size: 10px;">Object</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 20px;">code</a> <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 13.33px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/blog/tags/vuejs/" style="font-size: 13.33px;">vuejs</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/入门问题/" style="font-size: 10px;">入门问题</a> <a href="/blog/tags/应用实例/" style="font-size: 10px;">应用实例</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/数据输入/" style="font-size: 10px;">数据输入</a> <a href="/blog/tags/时延/" style="font-size: 10px;">时延</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/虚拟DOM/" style="font-size: 10px;">虚拟DOM</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
+      <a href="/blog/tags/Array/" style="font-size: 10px;">Array</a> <a href="/blog/tags/CORS/" style="font-size: 10px;">CORS</a> <a href="/blog/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/blog/tags/JS操作符/" style="font-size: 13.33px;">JS操作符</a> <a href="/blog/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/blog/tags/Object/" style="font-size: 10px;">Object</a> <a href="/blog/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/blog/tags/canvas/" style="font-size: 16.67px;">canvas</a> <a href="/blog/tags/code/" style="font-size: 20px;">code</a> <a href="/blog/tags/css/" style="font-size: 13.33px;">css</a> <a href="/blog/tags/element-ui/" style="font-size: 10px;">element-ui</a> <a href="/blog/tags/http-server/" style="font-size: 10px;">http-server</a> <a href="/blog/tags/mongoose/" style="font-size: 13.33px;">mongoose</a> <a href="/blog/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/sublime-text/" style="font-size: 10px;">sublime text</a> <a href="/blog/tags/timeout/" style="font-size: 10px;">timeout</a> <a href="/blog/tags/typescript/" style="font-size: 10px;">typescript</a> <a href="/blog/tags/vuejs/" style="font-size: 13.33px;">vuejs</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/事件循环/" style="font-size: 10px;">事件循环</a> <a href="/blog/tags/入门问题/" style="font-size: 10px;">入门问题</a> <a href="/blog/tags/应用实例/" style="font-size: 10px;">应用实例</a> <a href="/blog/tags/按需加载/" style="font-size: 10px;">按需加载</a> <a href="/blog/tags/数据输入/" style="font-size: 10px;">数据输入</a> <a href="/blog/tags/时延/" style="font-size: 10px;">时延</a> <a href="/blog/tags/自定义样式/" style="font-size: 10px;">自定义样式</a> <a href="/blog/tags/虚拟DOM/" style="font-size: 10px;">虚拟DOM</a> <a href="/blog/tags/跨域/" style="font-size: 10px;">跨域</a>
     </div>
   </div>
 
@@ -763,7 +840,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">十一月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">21</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">十一月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">十月 2019</a><span class="archive-list-count">21</span></li></ul>
     </div>
   </div>
 
